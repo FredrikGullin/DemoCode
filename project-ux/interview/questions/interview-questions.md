@@ -33,4 +33,3 @@ Användartyp (elev / lärare):
 6. Skulle du kunna tänka dig att skapa ett bra kursmaterial för att marknadsföra och sälja detta genom en online-tjänst?
 
 7. Vad skulle vara viktigt för dig om du använder en sådan tjänst?
-
