@@ -1,22 +1,16 @@
 # Appeggio intervju 1
 
-### Demografisk information**
+## Demografisk information
 
-**Namn:** Xse Chaz
+    Namn: Xse Chaz
+    Ålder: 46
+    Kön: Kvinna
+    Geografiskt område: Stockholm
+    Utbildningsnivå: Universitet
 
-**Ålder:** 46
+    Sysselsättning: Personlig tränare / rehabiliteringsspecialist / enskild firma
 
-**Kön:** Kvinna
-
-**Geografiskt område:** Stockholm
-
-**Utbildningsnivå:** Universitet
-
-**Sysselsättning:** Personlig tränare / rehabiliteringsspecialist / enskild firma
-
-_Användartyp:_ **Elev**
-
-### Musikbakgrund och intressen
+## Musikbakgrund och intressen
 
 **1. Kan du beskriva din relation till musik?**
 
@@ -39,13 +33,13 @@ _Användartyp:_ **Elev**
     Jag vill lära mig piano för att få ett nytt sätt att uttrycka mig på.
 
 
-### Online-kurser / lärande preferenser
+## Online-kurser / lärande preferenser
 
 **1. Har du tidigare erfarenhet av att använda online-lärande plattformar? Om ja, vilken / vilka?**
 
     Ja, jag har provat Simpel piano som är en online-applikation med interaktiva övningar.
 
-**2. Vad är dina preferenser när inlärningsstilar? (T.ex videolektioner, interaktiva övningar, personlig handledning)**
+**2. Vad är dina preferenser när det gäller inlärningsstilar? (T.ex videolektioner, interaktiva övningar, personlig handledning)**
 
     Jag skulle främst föredra videolektioner.
 
@@ -61,7 +55,7 @@ _Användartyp:_ **Elev**
 
     Att funktionaliteten är enkel, smart och lättillgänglig.
 
-### Teknik och tilgång
+## Teknik och resurser
 
 **1. Vilka enheter använder du vanligtvis när du surfar på internet?**
 
@@ -71,13 +65,13 @@ _Användartyp:_ **Elev**
 
     Ja.
 
-### Mål och förväntningar
+## Mål och förväntningar
 
 **1. Vilka mål har du med att lära dig ett nytt instrument? (T.ex personligt nöje, musikalisk karriär, socialt engagemang)**
 
     För att ha kul.
 
-### Ekonomiska aspekter
+## Ekonomiska aspekter
 
 **1. Skulle du vara beredd att betala för online-kurser för att lära dig spela musik? Om ja, vad skulle vara en rimlig prisnivå för dig?**
 
