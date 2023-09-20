@@ -2,7 +2,7 @@
 
 ## Demografisk information
 
-    Namn: Xse Chaz
+    Namn: Xsenka Chaz
     Ålder: 46
     Kön: Kvinna
     Geografiskt område: Stockholm
