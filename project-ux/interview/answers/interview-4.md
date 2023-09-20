@@ -87,3 +87,5 @@
     Jag skulle kunna tänka mig att betala 50 kronor / månad för en tjänst där man får ett kursupplägg. Eller t.ex microbetalning som 10 kronor för en lektion för en låt.
 
     Månadsbetalning förutsätter att användarna inte kan sprida materialet vidare.
+
+    Det skulle även kunna funka med en engångsavgift men då finns risken att materialet sprids.
