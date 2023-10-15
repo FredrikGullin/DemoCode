@@ -20,7 +20,7 @@
 
 **2. Spelar du redan ett musikinstrument? Om ja, vilket / vilka?**
 
-    Jag spelar cello, oud på grund av min pappa som är oudist. Jag kan även spela fiol då jag började med det innan jag spela cello. Jag kan spela lite piano och lite slagverk på grund av skolan.
+    Jag spelar cello, oud (arabisk luta, på grund av min pappa som är oudist). Jag kan även spela fiol då jag började med det innan jag spela cello. Jag kan spela lite piano och lite slagverk på grund av skolan.
 
 **3. Hur länge har du spelat musik / detta instrument?**
 

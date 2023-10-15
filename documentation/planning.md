@@ -42,7 +42,23 @@
     * Upprättat struktur för dokumentation av projektets genomförande
     * Skapat struktur för dokumentation av UX-arbete
     * Tagit fram mall med intervjufrågor
-    * Genomfört en intervju (1/5)
+    * Genomfört en intervju (4/4)
+
+    Datum: 2023-10-15
+    -----------------
+    * Gjort klart personas
+    * Gjort klart user-stories
+    * Gjort klart site-map
+    * Gjort klart low-fi prototyper
+
+    
+**Övrigt**
+
+_Under perioden 2023-09-20 - 2023-10-10 har jag på egen hand renoverat hemma. Jag har varit tvungen att prioritera detta eftersom_
+_jag behöver sälja min lägenhet och flytta. Detta på grund av att det är för dyrt för mig att bo kvar här som student._ 
+_Jag har därför varit tvungen att prioritera detta. Jag har även jobbat deltid under denna period vilket har gjort att_
+_jag hamnat efter i planeringen. Jag ska nu se till att färdigställa projektet inom utsatt tidsram, och då helst utan_
+_på bekostnad av kvalité._
 
 ## Utveckling - Sprint 1
 

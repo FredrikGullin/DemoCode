@@ -9,7 +9,7 @@
     * Databas: MongoDB
     * Backend: Node / Express
     * Frontend: React
-    * Design: Tailwind
+    * Design: Bootstrap / CSS
     * Dokumentation: Markdown
 
 ### Versionshantering
