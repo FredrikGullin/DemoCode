@@ -1,17 +1,26 @@
 import express from "express";
 import { home } from "./homeRoute";
 import {
-  users,
-  user,
-  register,
-  update,
-  login,
-  userDelete,
   current,
+  userDelete,
+  userGet,
+  usersGet,
+  userRegister,
+  userUpdate,
+  loginUser,
 } from "./userRoutes";
 
 export const routes = express.Router();
 
-routes.use(home, users, user, register, update, login, userDelete, current);
+routes.use(
+  current,
+  userDelete,
+  home,
+  userGet,
+  usersGet,
+  userRegister,
+  userUpdate,
+  loginUser
+);
 
 // routes.use(userRoutes);
