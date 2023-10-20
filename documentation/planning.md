@@ -51,11 +51,10 @@
     * Gjort klart site-map
     * Gjort klart low-fi prototyper
 
-    
 **Övrigt**
 
 _Under perioden 2023-09-20 - 2023-10-10 har jag på egen hand renoverat hemma. Jag har varit tvungen att prioritera detta eftersom_
-_jag behöver sälja min lägenhet och flytta. Detta på grund av att det är för dyrt för mig att bo kvar här som student._ 
+_jag behöver sälja min lägenhet och flytta. Detta på grund av att det är för dyrt för mig att bo kvar här som student._
 _Jag har därför varit tvungen att prioritera detta. Jag har även jobbat deltid under denna period vilket har gjort att_
 _jag hamnat efter i planeringen. Jag ska nu se till att färdigställa projektet inom utsatt tidsram, och då helst utan_
 _på bekostnad av kvalité._
@@ -64,13 +63,13 @@ _på bekostnad av kvalité._
 
 ### Deadline
 
-    Datum: N/A
+    Datum: 2023-10-22
 
 ### Mål
 
     Under denna sprint sprinten planerar jag att skapa en mongodatabas samt sätta upp en backend med ett fungerande API.
 
-    Sprinten pågår under perioden: 2023-09-25 - 2023-XX-XX
+    Sprinten pågår under perioden: 2023-10-16 - 2023-10-22
 
 ### Tasks
 
@@ -79,17 +78,37 @@ _på bekostnad av kvalité._
     3. Koppla backend till databasen
     4. Testa backend
 
+### Progression
+
+    Datum: 2023-10-20
+    -----------------
+    * Satt upp MongoDB
+    * Satt upp backend / express
+    * Skapat interfaces (users, auth, process.env)
+    * Satt upp user-routes
+    * Skapat user-controllers (CRUD)
+    * Satt upp middleware för router
+    * Skapat middleware för auth
+    * Städat upp i strukturen
+
+**Vad återstår?**
+
+- Controller för Logout
+- Controllers för courses
+- Routes för courses
+- Börja koppla frontend (om tid finns)
+
 ## Utveckling - Sprint 2
 
 ### Deadline
 
-    Datum: N/A
+    Datum: 2023-10-29
 
 ### Mål
 
     Under denna sprint planerar jag att skapa en enkel frontend samt koppla ihop denna med backend.
 
-    Sprinten pågår under perioden: 2023-XX-XX - 2023-XX-XX
+    Sprinten pågår under perioden: 2023-10-23 - 2023-10-29
 
 ### Tasks
 
