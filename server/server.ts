@@ -15,9 +15,12 @@ app.use(cors());
 
 app.use("/", routes);
 app.use("/users", routes);
+app.use("/users/:id", routes);
 app.use("/users/register", routes);
+app.use("/users/update/:id", routes);
 app.use("/users/login", routes);
-app.use("/users/verify", routes);
+app.use("/users/delete/:id", routes);
+app.use("/users/current", routes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
