@@ -8,6 +8,7 @@ import {
   userRegister,
   userUpdate,
   loginUser,
+  logoutUser,
 } from "./userRoutes";
 
 export const routes = express.Router();
@@ -20,7 +21,8 @@ routes.use(
   usersGet,
   userRegister,
   userUpdate,
-  loginUser
+  loginUser,
+  logoutUser
 );
 
 // routes.use(userRoutes);

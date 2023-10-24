@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
 import jwt, { Secret, JwtPayload } from "jsonwebtoken";
 import dotenv from "dotenv";
+import { redisClient } from "../../config/redisConnection";
 import { AuthRequest } from "../interfaces/AuthRequestInterface";
 
 dotenv.config();
@@ -17,10 +18,14 @@ export const auth = asyncHandler(
         throw new Error("Missing access token!");
       }
 
-      const decoded = jwt.verify(token, SECRET_KEY);
-      (req as unknown as AuthRequest).token = decoded;
+      const isRevoked = await redisClient.sIsMember("revokedList", token);
 
-      next();
+      if (!isRevoked) {
+        const decoded = jwt.verify(token, SECRET_KEY);
+        (req as unknown as AuthRequest).token = decoded;
+
+        next();
+      }
     } catch (err) {
       res.status(401);
       throw new Error("User must be authenticated!");
