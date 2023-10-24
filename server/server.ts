@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDb from "./config/dbConnection";
 import { routes } from "./src/routes/routerIndex";
 import connectRedis, {
+  cleanRevokedList,
   getRevokedList,
   scheduleClean,
 } from "./config/redisConnection";
