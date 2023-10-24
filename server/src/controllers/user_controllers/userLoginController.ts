@@ -23,7 +23,7 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
           id: user.user_id,
         };
         const accessToken = jwt.sign(validUser, SECRET_KEY, {
-          expiresIn: "5m",
+          expiresIn: "10m",
         });
         res.json({
           accessToken: accessToken,
