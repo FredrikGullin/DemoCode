@@ -30,22 +30,46 @@ export const storeRevokedToken = async (token: string) => {
 };
 
 export const cleanRevokedList = async () => {
-  const cleaned = await redisClient.del("revokedList");
+  const revokedList = await redisClient.sMembers("revokedList");
 
-  if (!cleaned) {
-    throw new Error("Failed cleaning revoked-list!");
+  if (revokedList.length > 0) {
+    const cleaned = await redisClient.del("revokedList");
+
+    if (!cleaned) {
+      throw new Error("Failed cleaning revoked-list!");
+    } else {
+      console.log("Revoked-list cleaned!");
+    }
   } else {
-    console.log("Revoked-list cleaned!");
+    console.log("Revoke-list is already empty!");
   }
 };
 
 export const scheduleClean = () => {
+  const now = new Date();
+  const nextMidnight = new Date(now);
+  nextMidnight.setHours(24, 0, 0, 0);
+
+  const initialDelay = nextMidnight.getTime() - now.getTime();
+
   setInterval(
     () => {
       cleanRevokedList();
     },
     24 * 60 * 60 * 1000
   );
+
+  cleanRevokedList();
+
+  setTimeout(() => {
+    cleanRevokedList();
+    setInterval(
+      () => {
+        cleanRevokedList();
+      },
+      24 * 60 * 60 * 1000
+    );
+  }, initialDelay);
 };
 
 export const getRevokedList = async () => {
