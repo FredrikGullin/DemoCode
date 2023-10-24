@@ -25,6 +25,9 @@ export const auth = asyncHandler(
         (req as unknown as AuthRequest).token = decoded;
 
         next();
+      } else {
+        res.status(401);
+        throw new Error("Token is revoked!");
       }
     } catch (err) {
       res.status(401);
