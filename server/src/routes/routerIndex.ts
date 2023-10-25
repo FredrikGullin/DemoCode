@@ -7,6 +7,7 @@ import {
   usersGet,
   userRegister,
   userUpdate,
+  adminUserUpdate,
   loginUser,
   logoutUser,
 } from "./userRoutes";
@@ -21,6 +22,7 @@ routes.use(
   usersGet,
   userRegister,
   userUpdate,
+  adminUserUpdate,
   loginUser,
   logoutUser
 );

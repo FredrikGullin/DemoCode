@@ -41,7 +41,7 @@ export const cleanRevokedList = async () => {
       console.log("Revoked-list cleaned!");
     }
   } else {
-    console.log("Revoke-list is already empty!");
+    console.log("Revoke-list is empty!");
   }
 };
 
