@@ -20,15 +20,21 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// App public routes
 app.use("/", routes);
-app.use("/users", routes);
-app.use("/users/:id", routes);
 app.use("/users/register", routes);
 app.use("/users/login", routes);
+
+// App private routes
+app.use("/users/:id", routes);
 app.use("/user/logout", routes);
 app.use("/users/update/:id", routes);
-app.use("/users/delete/:id", routes);
 app.use("/users/current", routes);
+
+// App admin routes
+app.use("/admin/users", routes);
+app.use("/admin/users/update/:id", routes);
+app.use("/admin/users/delete/:id", routes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);

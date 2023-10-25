@@ -18,18 +18,20 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
       const valid = await bcrypt.compare(req.body.password, user.password);
       if (valid) {
         const validUser = {
+          userId: user._id,
           username: user.username,
           email: user.email,
-          id: user.user_id,
+          role: user.role,
         };
         const accessToken = jwt.sign(validUser, SECRET_KEY, {
           expiresIn: "10m",
         });
         res.json({
           accessToken: accessToken,
-          userId: user.user_id,
+          userId: user._id,
           username: user.username,
           email: user.email,
+          role: user.role,
         });
       }
     }
