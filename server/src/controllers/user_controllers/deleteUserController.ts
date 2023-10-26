@@ -3,8 +3,8 @@ import asyncHandler from "express-async-handler";
 import { UserModel } from "../../models/userModel";
 
 //@desc deleteUser
-//@route GET /users/delete/:id
-//@access Private
+//@route GET /admin/users/delete/:id
+//@access Admin
 export const deleteUser = asyncHandler(async (req: Request, res: Response) => {
   try {
     const deletedUser = await UserModel.findByIdAndDelete(req.params.id);

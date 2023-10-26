@@ -1,0 +1,39 @@
+import { Request, Response } from "express";
+import asyncHandler from "express-async-handler";
+import { CourseModel } from "../../models/courseModel";
+
+//@desc getLesson
+//@route GET /courses/:id/lessons/:index
+//@access Public
+export const getLesson = asyncHandler(async (req: Request, res: Response) => {
+  try {
+    const courseId = req.params.id;
+    const lessonId = req.params._id;
+
+    console.log({
+      courseId,
+      lessonId,
+    });
+
+    const course = await CourseModel.findById(req.params.id);
+    if (!course) {
+      res.status(404);
+      throw new Error("Course not found!");
+    }
+
+    const lesson = course.lessons.find(
+      (lesson) => lesson._id.toString() === lessonId
+    );
+
+    if (!lesson) {
+      res.status(404).json({ message: "Lesson not found!" });
+    }
+
+    res.json(lesson);
+  } catch (err) {
+    res.status(401);
+    throw new Error("Error fetching course!");
+  }
+});
+
+export default getLesson;

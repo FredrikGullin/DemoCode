@@ -3,7 +3,7 @@ import asyncHandler from "express-async-handler";
 import { UserModel } from "../../models/userModel";
 
 //@desc getUser
-//@route POST /users/:id
+//@route GET /users/:id
 //@access Public
 export const getUser = asyncHandler(async (req: Request, res: Response) => {
   try {

@@ -22,6 +22,7 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
           username: user.username,
           email: user.email,
           role: user.role,
+          owned_courses: user.owned_courses,
         };
         const accessToken = jwt.sign(validUser, SECRET_KEY, {
           expiresIn: "10m",
@@ -32,6 +33,7 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
           username: user.username,
           email: user.email,
           role: user.role,
+          owned_courses: user.owned_courses,
         });
       }
     }

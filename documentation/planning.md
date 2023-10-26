@@ -112,10 +112,11 @@ _på bekostnad av kvalité._
 
 ### Tasks
 
-    1. Skapa enkel frontend
-    2. Koppla ihop frontend med backend
-    3. Utveckla funktionalitet
-    4. Testa funktionalitet
+    1. Skapa courses (routes / controllers)
+    2. Skapa enkel frontend
+    3. Koppla ihop frontend med backend
+    4. Utveckla funktionalitet
+    5. Testa funktionalitet
 
 ## Utveckling - Sprint 3
 
@@ -131,7 +132,7 @@ _på bekostnad av kvalité._
 
 ### Tasks
 
-    1. Implemmentera Tailwind
+    1. Implemmentera Bootstrap
     2. Designa applikationen
     3. Testa design / responsivitet
 
@@ -143,7 +144,7 @@ _på bekostnad av kvalité._
 
 ### Mål
 
-    Under denna sprint planerar jag att testa applikationen och färdigställa.
+    Under denna sprint planerar jag att implementera "PWA" samt testa applikationen och färdigställa.
 
     Sprinten pågår under perioden: 2023-XX-XX - 2023-XX-XX
 
