@@ -4,7 +4,11 @@ export interface UserInterface {
   email: string;
   password: string;
   role: string;
-  courses: {
-    course_id: string;
-  };
+  owned_courses: Array<
+    [
+      {
+        course_id: string;
+      },
+    ]
+  >;
 }

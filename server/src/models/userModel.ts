@@ -8,11 +8,13 @@ const UserSchema = new Schema<UserInterface>(
     email: String,
     password: String,
     role: String,
-    courses: [
-      {
-        course_id: String,
-      },
-    ],
+    owned_courses: Array<
+      [
+        {
+          course_id: String;
+        },
+      ]
+    >,
   },
   {
     timestamps: true,

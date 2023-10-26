@@ -3,22 +3,16 @@ import { CourseInterface } from "../interfaces/CourseInterface";
 
 const CourseSchema = new Schema<CourseInterface>(
   {
-    course_id: Number,
+    course_id: String,
     course_name: String,
     course_info: String,
     course_picture: String,
     lessons: [
       {
-        lesson_id: Number,
+        _id: String,
         lesson_title: String,
-        lesson_description: {
-          description_id: Number,
-          text: String,
-        },
-        lesson_video: {
-          video_id: Number,
-          video_url: String,
-        },
+        description: String,
+        video_url: String,
       },
     ],
   },

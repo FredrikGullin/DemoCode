@@ -7,10 +7,19 @@ import {
   usersGet,
   userRegister,
   userUpdate,
-  adminUserUpdate,
   loginUser,
   logoutUser,
 } from "./userRoutes";
+import {
+  courseCreate,
+  courseDelete,
+  courseGet,
+  courseLessonGet,
+  courseLessonsGet,
+  courseUpdate,
+  coursesGet,
+} from "./courseRoutes";
+import getLesson from "../controllers/course_controllers/getLessonsController";
 
 export const routes = express.Router();
 
@@ -22,9 +31,15 @@ routes.use(
   usersGet,
   userRegister,
   userUpdate,
-  adminUserUpdate,
   loginUser,
-  logoutUser
+  logoutUser,
+  courseCreate,
+  coursesGet,
+  courseGet,
+  courseUpdate,
+  courseDelete,
+  courseLessonsGet,
+  courseLessonGet
 );
 
 // routes.use(userRoutes);
