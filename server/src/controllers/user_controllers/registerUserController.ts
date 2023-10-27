@@ -13,6 +13,7 @@ export const registerUser = asyncHandler(
     const hashedPassword = await bcrypt.hash(user.password, 1);
     user.password = hashedPassword;
     user.role = "student";
+    user.owned_courses = [];
     try {
       const existingUser = await UserModel.findOne({ email: user.email });
       if (existingUser) {

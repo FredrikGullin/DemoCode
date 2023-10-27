@@ -62,7 +62,7 @@ export const purchaseCourse = asyncHandler(
 
         res.status(200).json({
           message: "Course purchased successfully!",
-          token: updatedToken,
+          accessToken: updatedToken,
         });
       }
     } catch (err) {
