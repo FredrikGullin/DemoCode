@@ -118,6 +118,17 @@ _på bekostnad av kvalité._
     4. Utveckla funktionalitet
     5. Testa funktionalitet
 
+### Progression
+
+    Datum: 2023-10-27
+    -----------------
+    * Skapat routes / controllers / CRUD för courses
+    * Skapat adminLock middleware
+    * Skapat paywall middleware
+    * Skapat searchCourse function
+    * Testat funktionalitet i Thunder client
+    * Backend klar
+
 ## Utveckling - Sprint 3
 
 ### Deadline
