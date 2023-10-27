@@ -26,13 +26,18 @@ app.use("/users/register", routes);
 app.use("/users/login", routes);
 app.use("/courses", routes);
 app.use("courses/:id", routes);
+app.use("/courses/search", routes);
 
 // App private routes
 app.use("/users/:id", routes);
-app.use("/user/logout", routes);
+app.use("/users/logout", routes);
 app.use("/users/update/:id", routes);
 app.use("/users/current", routes);
+app.use("/users/:id/courses", routes);
 app.use("/courses/:id/lessons/", routes);
+app.use("/courses/:id/purchase", routes);
+
+// App paywall routes
 app.use("/courses/:id/lessons/:_id", routes);
 
 // App admin routes

@@ -2,6 +2,7 @@ import express from "express";
 import { home } from "./homeRoute";
 import {
   current,
+  userCourses,
   userDelete,
   userGet,
   usersGet,
@@ -14,32 +15,34 @@ import {
   courseCreate,
   courseDelete,
   courseGet,
+  coursesGet,
   courseLessonGet,
   courseLessonsGet,
+  courseSearch,
   courseUpdate,
-  coursesGet,
+  coursePurchase,
 } from "./courseRoutes";
-import getLesson from "../controllers/course_controllers/getLessonsController";
 
 export const routes = express.Router();
 
 routes.use(
   current,
-  userDelete,
   home,
-  userGet,
-  usersGet,
-  userRegister,
-  userUpdate,
   loginUser,
   logoutUser,
   courseCreate,
+  courseDelete,
   coursesGet,
   courseGet,
-  courseUpdate,
-  courseDelete,
+  courseLessonGet,
   courseLessonsGet,
-  courseLessonGet
+  coursePurchase,
+  courseSearch,
+  courseUpdate,
+  userCourses,
+  userDelete,
+  userGet,
+  usersGet,
+  userRegister,
+  userUpdate
 );
-
-// routes.use(userRoutes);

@@ -15,6 +15,7 @@ export const updateUser = asyncHandler(async (req: Request, res: Response) => {
     user.username = req.body.username;
     user.email = req.body.email;
     user.password = req.body.password;
+    user.role = "student";
     const updatedUser = await user.save();
     res.status(200).json(updatedUser);
   } catch (err) {
