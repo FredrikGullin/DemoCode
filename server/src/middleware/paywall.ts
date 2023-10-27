@@ -1,4 +1,3 @@
-// Setup paywall
 import { Request, Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
 import jwt, { Secret, JwtPayload } from "jsonwebtoken";

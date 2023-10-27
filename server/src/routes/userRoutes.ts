@@ -9,6 +9,7 @@ import registerUser from "../controllers/user_controllers/registerUserController
 import updateUser from "../controllers/user_controllers/updateUserController";
 import userLogin from "../controllers/user_controllers/userLoginController";
 import userLogout from "../controllers/user_controllers/userLogoutController";
+import getOwnedCourses from "../controllers/user_controllers/getUserCoursesController";
 
 export const current = Router();
 export const userDelete = Router();
@@ -29,7 +30,7 @@ current.get("/users/current", auth, currentUser);
 logoutUser.post("/users/logout", auth, userLogout);
 userGet.get("/users/:id", auth, getUser);
 userUpdate.put("/users/update/:id", auth, updateUser);
-userCourses.get("/user/:id/courses");
+userCourses.get("/users/:id/courses", auth, getOwnedCourses);
 
 //@Access Admin
 usersGet.get("/admin/users", adminLock, getUsers);

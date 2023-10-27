@@ -9,21 +9,29 @@ import updateCourse from "../controllers/course_controllers/updateCourseControll
 import deleteCourse from "../controllers/course_controllers/deleteCourseController";
 import getLessons from "../controllers/course_controllers/getLessonsController";
 import getLesson from "../controllers/course_controllers/getLessonController";
+import { searchCourse } from "../controllers/course_controllers/searchCourseController";
+import { purchaseCourse } from "../controllers/course_controllers/purchaseCourseController";
 
-export const coursesGet = Router();
-export const courseGet = Router();
-export const courseLessonsGet = Router();
-export const courseLessonGet = Router();
 export const courseCreate = Router();
 export const courseDelete = Router();
+export const courseGet = Router();
+export const coursesGet = Router();
+export const courseLessonsGet = Router();
+export const courseLessonGet = Router();
+export const coursePurchase = Router();
+export const courseSearch = Router();
 export const courseUpdate = Router();
 
 //@Access Public
-coursesGet.get("/courses", getCourses);
 courseGet.get("/courses/:id", getCourse);
+coursesGet.get("/courses", getCourses);
+courseSearch.post("/courses/search", searchCourse);
 
 //@Access Private
 courseLessonsGet.get("/courses/:id/lessons", auth, getLessons);
+coursePurchase.put("/courses/:id/purchase", auth, purchaseCourse);
+
+//@Access Paywall
 courseLessonGet.get("/courses/:id/lessons/:_id", paywall, getLesson);
 
 //@Access Admin
