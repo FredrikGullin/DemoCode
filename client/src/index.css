@@ -1,0 +1,4 @@
+/* Additional styles, possibly in another CSS file */
+body {
+  padding-top: 60px; /* Adjust based on the actual height of your Navbar */
+}
