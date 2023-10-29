@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import "./home.css"; // Import your CSS
+import "./home.css";
 
 const Home: React.FC = () => {
   return (
@@ -14,16 +14,18 @@ const Home: React.FC = () => {
           </p>
         </div>
         <div style={{ marginBottom: "2rem" }}>
-          <Button
-            variant="primary"
-            className="button signUpButton"
-            href="/signup"
-          >
-            Sign Up
-          </Button>
-          <Button variant="secondary" className="button" href="/login">
-            Login
-          </Button>
+          <div className="buttons-container">
+            <Button
+              variant="primary"
+              className="button signUpButton"
+              href="/signup"
+            >
+              Sign Up
+            </Button>
+            <Button variant="secondary" className="button" href="/login">
+              Login
+            </Button>
+          </div>
         </div>
       </div>
       <div className="hero-image"></div>
