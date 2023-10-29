@@ -14,9 +14,7 @@
 
 .button {
   margin: 0.5rem;
-
   background-color: rgba(255, 255, 255, 0.452);
-  /* border: none; */
   text-shadow: none;
 }
 
@@ -29,6 +27,14 @@
   .hero-container {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
       url("https://img.freepik.com/premium-photo/black-jazzman-hat-plays-saxophone-stage-with-spotlights-black-jazz-musician-preforming-scene_266732-22059.jpg?w=360");
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .buttons-container {
+    float: right;
   }
 }
 
