@@ -1,16 +1,18 @@
+import { RouterProvider } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/footer/footer";
 import NavScroll from "./components/navbar/navbar";
-import Home from "./views/home/home";
-import Login from "./views/login/login";
-import Register from "./views/register/register";
+import router from "./router/routerIndex";
 
 function App() {
   return (
     <>
-      <NavScroll />
-      <Home />
-      <Footer />
+      <Router>
+        <NavScroll />
+        {router}
+        <Footer />
+      </Router>
     </>
   );
 }

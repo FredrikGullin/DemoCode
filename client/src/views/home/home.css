@@ -1,4 +1,4 @@
-.hero-container {
+.home-container {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -12,58 +12,21 @@
   padding-bottom: 2rem;
 }
 
-.button {
-  margin: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.452);
-  text-shadow: none;
-}
-
-.signUpButton {
-  margin-right: 1.5rem;
-}
-
 /* For mobile devices */
 @media (max-width: 768px) {
-  .hero-container {
+  .home-container {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
       url("https://img.freepik.com/premium-photo/black-jazzman-hat-plays-saxophone-stage-with-spotlights-black-jazz-musician-preforming-scene_266732-22059.jpg?w=360");
-  }
-
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-
-  .buttons-container {
-    float: right;
   }
 }
 
 /* For larger screens */
 @media (min-width: 769px) {
-  .hero-container {
+  .home-container {
     justify-content: center;
     background-color: black;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
       url("https://www.jukebox.com.pt/site/site_en2/wp-content/uploads/2021/03/8fd851bf-3f01-44b1-ad98-2a094ca8e445.jpeg");
     height: 100vh -60px;
-  }
-
-  .hero-container h1 {
-    font-size: 3rem;
-  }
-
-  .hero-container p {
-    font-size: 1.5rem;
-  }
-
-  .hero-container .button {
-    font-size: 1.2rem;
-    padding: 15px 30px;
-    opacity: 0.8;
-  }
-
-  .hero-container .btn {
-    font-size: 1.2rem;
-    padding: 15px 30px;
   }
 }

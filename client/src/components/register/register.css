@@ -1,25 +1,14 @@
-body,
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-}
-
-.login-view {
+.register-view {
   display: flex;
   position: relative;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 60%;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
-    url("https://img.freepik.com/premium-photo/black-jazzman-hat-plays-saxophone-stage-with-spotlights-black-jazz-musician-preforming-scene_266732-22059.jpg?w=360");
-  background-size: cover;
-  background-position: center;
 }
 
-.login-container {
+.register-container {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -33,35 +22,22 @@ label {
   margin-top: 10px;
 }
 
-.login-button {
+.register-button {
   margin-top: 10px;
   float: right;
 }
 
 /* For larger screens */
 @media (min-width: 769px) {
-  body,
-  html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .login-view .login-container {
+  .register-view .register-container {
     width: 50% !important;
     margin: 0 auto;
   }
 
-  .login-view {
+  .register-view {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
-      url("https://www.jukebox.com.pt/site/site_en2/wp-content/uploads/2021/03/8fd851bf-3f01-44b1-ad98-2a094ca8e445.jpeg");
     height: calc(100vh - 60px);
     flex-grow: 1;
     background-size: cover;
@@ -69,7 +45,7 @@ label {
     background-repeat: no-repeat;
   }
 
-  .login-container {
+  .register-container {
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.8);
