@@ -1,0 +1,122 @@
+.welcome-message h1 {
+  font-size: 4rem;
+  margin-bottom: 7rem;
+}
+
+.dashboardUser-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(121, 117, 117, 0.8);
+  margin-bottom: 5rem;
+  padding: 40px;
+  padding-left: 6rem;
+  width: auto;
+  max-width: 80%;
+  flex-wrap: wrap;
+}
+
+.dashboard-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+  padding-right: 3.2rem;
+}
+
+.icon {
+  width: 3em;
+  height: 3em;
+  color: white;
+}
+
+.icon:hover {
+  color: red;
+}
+
+.dashboard-option label {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: white;
+}
+
+.dashboard-link {
+  text-decoration: none;
+}
+
+@media (max-width: 1399px) {
+  .dashboardUser-container .row {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .dashboard-option {
+    width: 33%;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 799px) {
+  .welcome-message h1 {
+    font-size: 2.5rem;
+    margin-bottom: 7rem;
+  }
+
+  .dashboardUser-container {
+    max-width: 80%;
+    min-width: 60%;
+  }
+
+  .icon {
+    width: 2.2em;
+    height: 2.2em;
+  }
+
+  .dashboard-option label {
+    font-size: 1em;
+    margin-top: 10px;
+  }
+
+  .dashboardUser-container .row {
+    justify-content: space-around;
+  }
+
+  .dashboard-option {
+    width: 45%;
+    margin: 10px 0;
+  }
+
+  @media (max-width: 580px) {
+    .welcome-message h1 {
+      font-size: 2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .dashboardUser-container {
+      max-width: 100%;
+      min-width: 100%;
+      padding: 10px;
+      padding-left: 3.5rem;
+    }
+
+    .icon {
+      width: 3em;
+      height: 3em;
+    }
+
+    .dashboard-option label {
+      font-size: 0.8em;
+    }
+
+    .dashboardUser-container .row {
+      justify-content: space-around;
+    }
+
+    .dashboard-option {
+      width: 45%;
+      margin: 10px 0;
+    }
+  }
+}

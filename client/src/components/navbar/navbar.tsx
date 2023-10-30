@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./navbar.css";
 
-function NavScroll() {
+const AppNavbar: React.FC = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary fixed-top">
       <Container fluid>
@@ -28,14 +28,14 @@ function NavScroll() {
                 Profile
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/" disabled>
-                My courses
+                Dashboard
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/login">
                 Login
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={Link} to="/about">
               About
             </Nav.Link>
           </Nav>
@@ -52,6 +52,6 @@ function NavScroll() {
       </Container>
     </Navbar>
   );
-}
+};
 
-export default NavScroll;
+export default AppNavbar;

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -8,29 +9,29 @@ import {
 
 import "./footer.css";
 
-function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer className="custom-footer">
       <div className="social-icons">
-        <a href="#">
+        <a href="https://www.facebook.com" target="_blank">
           <FontAwesomeIcon icon={faFacebook} />
         </a>
-        <a href="#">
+        <a href="https://www.x.com" target="_blank">
           <FontAwesomeIcon icon={faTwitter} />
         </a>
-        <a href="#">
+        <a href="https://www.instagram.com" target="_blank">
           <FontAwesomeIcon icon={faInstagram} />
         </a>
-        <a href="#">
+        <a href="https://www.youtube.com" target="_blank">
           <FontAwesomeIcon icon={faYoutube} />
         </a>{" "}
       </div>
 
       <hr />
       <div className="footer-links">
-        <a href="#">About</a>
+        <Link to="/about">About</Link>
         <span>|</span>
-        <a href="#">Terms & Conditions</a>
+        <Link to="/disclaimer">Terms & Conditions</Link>
         <span>|</span>
         <a href="#">Feedback</a>
       </div>
@@ -39,6 +40,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

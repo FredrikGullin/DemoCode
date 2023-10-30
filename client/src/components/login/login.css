@@ -13,7 +13,7 @@
   position: relative;
   flex-direction: column;
   max-height: 100vh;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(121, 117, 117, 0.8);
   padding: 20px;
   border-radius: 10px;
 }
@@ -48,7 +48,7 @@ label {
   .login-container {
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(121, 117, 117, 0.8);
     padding: 20px;
     margin: 0 auto;
     border-radius: 10px;
