@@ -1,12 +1,13 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import "./disclaimer.css";
+import disclaimerImage from "../../assets/disclaimer-img.jpg";
 
 const Disclaimer: React.FC = () => {
   return (
     <Container fluid className="disclaimer-container">
-      <div className="disclaimer-background">
-        <div className="text-section">
+      <div className="disclaimer-wrap">
+        <div className="disclaimer-text-section">
           <h2>Disclaimer</h2>
           <p>
             This application is provided strictly for non-commercial use. Any
@@ -30,6 +31,13 @@ const Disclaimer: React.FC = () => {
             By using this application, users acknowledge and agree to this
             disclaimer in its entirety.
           </p>
+        </div>
+        <div className="disclaimer-image-wrap">
+          <img
+            src={disclaimerImage}
+            alt="A girl sitting with a trompet"
+            className="disclaimer-image"
+          />
         </div>
       </div>
     </Container>
