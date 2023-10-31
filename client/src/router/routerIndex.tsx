@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../views/home/home";
-import About from "../views/about/about";
-import Disclaimer from "../views/disclaimer/disclaimer";
-import Dashboard from "../views/dashboardTemplate/dashboardTemplate";
+import MainTemplate from "../views/main-template/mainTemplate";
+import InfoTemplate from "../views/info-template/infoTempalte";
+import About from "../components/about/about";
+import Disclaimer from "../components/disclaimer/disclaimer";
 import DashboardUser from "../components/dashboardUser/dashboardUser";
 import Login from "../components/login/login";
 import Register from "../components/register/register";
@@ -13,35 +13,49 @@ const router = (
     <Route
       path="/"
       element={
-        <Home>
+        <MainTemplate>
           <HeroText />
-        </Home>
+        </MainTemplate>
       }
     />
     <Route
       path="/login"
       element={
-        <Home>
+        <MainTemplate>
           <Login />
-        </Home>
+        </MainTemplate>
       }
     />
     <Route
       path="/register"
       element={
-        <Home>
+        <MainTemplate>
           <Register />
-        </Home>
+        </MainTemplate>
       }
     />
-    <Route path="/about" element={<About />} />
-    <Route path="/disclaimer" element={<Disclaimer />} />
+    <Route
+      path="/about"
+      element={
+        <InfoTemplate>
+          <About />
+        </InfoTemplate>
+      }
+    />
+    <Route
+      path="/disclaimer"
+      element={
+        <InfoTemplate>
+          <Disclaimer />
+        </InfoTemplate>
+      }
+    />
     <Route
       path="/dashboard"
       element={
-        <Dashboard>
+        <MainTemplate>
           <DashboardUser username={"John Doe"} />
-        </Dashboard>
+        </MainTemplate>
       }
     />
   </Routes>
