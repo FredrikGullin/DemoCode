@@ -46,7 +46,7 @@ const Courses: React.FC = () => {
         <div className="list-container">
           {courses.map((course) => (
             <Link
-              to={`/course/${course._id}`}
+              to={`/courses/${course._id}`}
               className="text-decoration-none"
               key={course._id}
             >
@@ -61,8 +61,14 @@ const Courses: React.FC = () => {
                   </div>
                   <div className="col-md-8">
                     <div className="card-body">
-                      <h3 className="card-title">{course.course_name}</h3>
-                      <p className="card-text">{course.course_info}</p>
+                      <h2 className="card-title">{course.course_name}</h2>
+                      <h5 className="card-slogan">{course.course_slogan}</h5>
+                      <div className="card-info">
+                        <p>{course.course_info}</p>
+                      </div>
+                      <p className="card-price">
+                        Price: {course.course_price} USD
+                      </p>
                     </div>
                   </div>
                 </div>

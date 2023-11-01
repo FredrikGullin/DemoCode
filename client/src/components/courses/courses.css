@@ -31,11 +31,43 @@
   margin: 0 auto;
 }
 
+.card {
+  transition: transform 0.5 ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
 .course-image {
   max-height: 250px;
   min-height: 250px;
   width: 400px;
   object-fit: cover;
+}
+
+.card-info {
+  overflow: hidden;
+  max-height: 100px;
+  background: -webkit-linear-gradient(
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0)
+  ); /* The gradient definition, adjust colors as necessary */
+  -webkit-background-clip: text; /* Apply the background to the text */
+  color: transparent; /* Makes the original text color transparent, allowing the background to show */
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  ); /* The gradient mask */
+}
+
+.card-price {
+  font-style: italic;
+  text-decoration: underline;
+  color: gray;
 }
 
 @media (max-width: 768px) {

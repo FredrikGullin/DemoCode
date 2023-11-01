@@ -15,6 +15,7 @@ export const searchCourse = asyncHandler(
       const results = await CourseModel.find({
         $or: [
           { course_name: { $regex: query, $options: "i" } },
+          { course_slogan: { $regex: query, $options: "i" } },
           { course_info: { $regex: query, $options: "i" } },
         ],
       });

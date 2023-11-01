@@ -1,0 +1,81 @@
+.course-container {
+  min-height: calc(100vh - 313px);
+}
+.course-card {
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 80px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.card-img {
+  min-height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+.card-img-sm {
+  display: none;
+  min-height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+.buy-section-sm {
+  display: none;
+  font-style: italic;
+  text-decoration: underline;
+  color: gray;
+}
+
+.buy-section p {
+  font-style: italic;
+  text-decoration: underline;
+  color: gray;
+}
+
+.buy-button {
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .course-container {
+    max-width: calc(100vh - 200px);
+  }
+
+  .course-card {
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .card-img {
+    display: none;
+  }
+
+  .card-img-sm {
+    display: block;
+    max-height: 200px;
+    width: auto;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+
+  .buy-section {
+    display: none;
+    font-style: italic;
+    text-decoration: underline;
+    color: gray;
+    margin-bottom: 20px;
+  }
+
+  .buy-section-sm {
+    display: block;
+    font-style: italic;
+    text-decoration: underline;
+    color: gray;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
