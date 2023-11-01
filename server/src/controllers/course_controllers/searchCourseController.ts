@@ -4,19 +4,18 @@ import { CourseModel } from "../../models/courseModel";
 
 export const searchCourse = asyncHandler(
   async (req: Request, res: Response) => {
-    const { query } = req.query as { query: string };
+    const { search } = req.body;
 
-    if (!query) {
+    if (!search) {
       res.status(400).json({ message: "Please provide a search query!" });
-      return;
     }
 
     try {
       const results = await CourseModel.find({
         $or: [
-          { course_name: { $regex: query, $options: "i" } },
-          { course_slogan: { $regex: query, $options: "i" } },
-          { course_info: { $regex: query, $options: "i" } },
+          { course_name: { $regex: search, $options: "i" } },
+          { course_slogan: { $regex: search, $options: "i" } },
+          { course_info: { $regex: search, $options: "i" } },
         ],
       });
 

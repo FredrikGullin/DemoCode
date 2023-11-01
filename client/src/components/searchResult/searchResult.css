@@ -1,0 +1,130 @@
+.not-found-container {
+  min-height: calc(100vh - 233px);
+}
+
+.not-found-message {
+  max-width: 40%;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  background-color: red;
+}
+
+.result-container {
+  min-height: calc(100vh - 233px);
+}
+.search-hero-section-lg {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding: 40px;
+  background-image: url("../../assets/courses-hero-pic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: black;
+  color: white;
+}
+
+.search-hero-section-lg h1 {
+  font-size: 2.5rem;
+  text-decoration: underline;
+}
+
+.search-hero-section-lg h2 {
+  font-size: 3rem;
+}
+
+.search-hero-section-lg p {
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 3px rgb(214, 15, 15);
+  color: rgb(255, 136, 0);
+}
+
+.search-list-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.card {
+  transition: transform 0.5 ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.course-image {
+  max-height: 250px;
+  min-height: 250px;
+  width: 400px;
+  object-fit: cover;
+}
+
+.card-info {
+  overflow: hidden;
+  max-height: 100px;
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
+}
+
+.card-price {
+  font-style: italic;
+  text-decoration: underline;
+  color: gray;
+}
+
+@media (max-width: 768px) {
+  .not-found-message {
+    min-width: 90%;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    background-color: red;
+  }
+
+  .search-hero-section-lg {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding: 25px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+      url("../../assets/courses-hero-pic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: black;
+    color: white;
+  }
+
+  .search-hero-section-lg h1 {
+    font-size: 1.4rem;
+    text-decoration: underline;
+  }
+
+  .search-hero-section-lg h2 {
+    font-size: 1.5rem;
+  }
+
+  .search-hero-section-lg p {
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 3px rgba(214, 15, 15);
+    color: rgb(255, 136, 0);
+  }
+}
