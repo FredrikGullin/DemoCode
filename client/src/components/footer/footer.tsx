@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
         <span>|</span>
         <Link to="/disclaimer">Terms & Conditions</Link>
         <span>|</span>
-        <a href="#">Feedback</a>
+        <Link to="#">Feedback</Link>
       </div>
       <div className="standard-site">
         <p>© 2023 Appeggio. All rights reserved.</p>

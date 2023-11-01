@@ -23,20 +23,26 @@ const DashboardOption: React.FC<DashboardOptionProps> = ({
   const Component = as || "div";
 
   return (
-    <Component className={`dashboard-option ${className}`} to={to}>
-      <FontAwesomeIcon icon={icon} className="icon" />
-      <label>{label}</label>
-    </Component>
+    <div className="col-lg-4 col-md-6 col-sm-6 col-6 mb-4">
+      <div className="card h-100">
+        <div className="card-body text-center">
+          <Component className={`dashboard-option ${className}`} to={to}>
+            <FontAwesomeIcon icon={icon} className="icon mb-3" size="3x" />
+            <label className="card-text">{label}</label>
+          </Component>
+        </div>
+      </div>
+    </div>
   );
 };
 
 const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
   return (
     <>
-      <div className="welcome-message">
+      <div className="welcome-message mb-5">
         <h1>Welcome, {username}!</h1>
       </div>
-      <div className="dashboardUser-container">
+      <div className="dashboardUser-container row">
         <DashboardOption
           icon={faUser}
           label="Profile"
@@ -55,7 +61,7 @@ const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
           icon={faBook}
           label="Courses"
           as={Link}
-          to="/"
+          to="/courses"
           className="dashboard-link"
         />
         <DashboardOption

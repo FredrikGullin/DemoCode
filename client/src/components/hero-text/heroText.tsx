@@ -16,20 +16,23 @@ const HeroText: React.FC = () => {
         </div>
         <div style={{ marginBottom: "2rem" }}>
           <div className="buttons-container">
-            <Link to={`/register`}>
-              <Button
-                variant="primary"
-                className="button signUpButton"
-                href="/signup"
-              >
-                Sign Up
-              </Button>
-            </Link>
-            <Link to={`/login`}>
-              <Button variant="secondary" className="button">
-                Login
-              </Button>
-            </Link>
+            <Button
+              as={Link as any}
+              to="/register"
+              variant="primary"
+              className="button signUpButton"
+            >
+              Sign Up
+            </Button>
+
+            <Button
+              as={Link as any}
+              to="/login"
+              variant="secondary"
+              className="button"
+            >
+              Login
+            </Button>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import MainTemplate from "../views/main-template/mainTemplate";
-import InfoTemplate from "../views/info-template/infoTempalte";
+import InfoTemplate from "../views/info-template/infoTemplate";
+import Courses from "../components/courses/courses";
 import About from "../components/about/about";
 import Disclaimer from "../components/disclaimer/disclaimer";
 import DashboardUser from "../components/dashboardUser/dashboardUser";
@@ -18,6 +19,7 @@ const router = (
         </MainTemplate>
       }
     />
+    <Route path="/courses" element={<Courses></Courses>} />
     <Route
       path="/login"
       element={

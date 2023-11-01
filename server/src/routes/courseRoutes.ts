@@ -12,29 +12,33 @@ import getLesson from "../controllers/course_controllers/getLessonController";
 import { searchCourse } from "../controllers/course_controllers/searchCourseController";
 import { purchaseCourse } from "../controllers/course_controllers/purchaseCourseController";
 
-export const courseCreate = Router();
-export const courseDelete = Router();
-export const courseGet = Router();
-export const coursesGet = Router();
-export const courseLessonsGet = Router();
-export const courseLessonGet = Router();
-export const coursePurchase = Router();
-export const courseSearch = Router();
-export const courseUpdate = Router();
+// export const courseCreate = Router();
+// export const courseDelete = Router();
+// export const courseGet = Router();
+// export const coursesGet = Router();
+// export const courseLessonsGet = Router();
+// export const courseLessonGet = Router();
+// export const coursePurchase = Router();
+// export const courseSearch = Router();
+// export const courseUpdate = Router();
+
+const courseRouter = Router();
 
 //@Access Public
-courseGet.get("/courses/:id", getCourse);
-coursesGet.get("/courses", getCourses);
-courseSearch.post("/courses/search", searchCourse);
+courseRouter.get("/courses/:id", getCourse);
+courseRouter.get("/courses", getCourses);
+courseRouter.post("/courses/search", searchCourse);
 
 //@Access Private
-courseLessonsGet.get("/courses/:id/lessons", auth, getLessons);
-coursePurchase.put("/courses/:id/purchase", auth, purchaseCourse);
+courseRouter.get("/courses/:id/lessons", auth, paywall, getLessons);
+courseRouter.put("/courses/:id/purchase", auth, purchaseCourse);
 
 //@Access Paywall
-courseLessonGet.get("/courses/:id/lessons/:_id", paywall, getLesson);
+courseRouter.get("/courses/:id/lessons/:_id", auth, paywall, getLesson);
 
 //@Access Admin
-courseCreate.post("/admin/courses/create", adminLock, createCourse);
-courseDelete.delete("/admin/courses/delete/:id", adminLock, deleteCourse);
-courseUpdate.put("/admin/courses/update/:id", adminLock, updateCourse);
+courseRouter.post("/admin/courses/create", adminLock, createCourse);
+courseRouter.delete("/admin/courses/delete/:id", adminLock, deleteCourse);
+courseRouter.put("/admin/courses/update/:id", adminLock, updateCourse);
+
+export default courseRouter;
