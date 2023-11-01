@@ -3,10 +3,10 @@
 ## Projekt deadline
 
     Projekt: Appeggio
-    Datum: 2023-11-03
+    Datum: 2023-11-10
     Tid: 23:59
     Förarbete: 1 vecka - 2023-09-19 - 2023-09-24
-    Sprintar: 4 - 2023-09-25 - 2023-11-03
+    Sprintar: 5 - 2023-09-25 - 2023-11-10
 
 ## Förarbete / UX
 
@@ -91,13 +91,6 @@ _på bekostnad av kvalité._
     * Skapat middleware för auth
     * Städat upp i strukturen
 
-**Vad återstår?**
-
-- Controller för Logout
-- Controllers för courses
-- Routes för courses
-- Börja koppla frontend (om tid finns)
-
 ## Utveckling - Sprint 2
 
 ### Deadline
@@ -128,6 +121,7 @@ _på bekostnad av kvalité._
     * Skapat searchCourse function
     * Testat funktionalitet i Thunder client
     * Backend klar
+    * Kopplat ihop backend och frontend
 
 ## Utveckling - Sprint 3
 
@@ -137,15 +131,27 @@ _på bekostnad av kvalité._
 
 ### Mål
 
-    Under denna sprint planerar jag att jobba med applikationens design.
+    Under denna sprint planerar jag att jobba med applikationens design och funktionalitet i frontend.
 
-    Sprinten pågår under perioden: 2023-XX-XX - 2023-XX-XX
+    Sprinten pågår under perioden: 2023-10-30 - 2023-11-05
 
 ### Tasks
 
     1. Implemmentera Bootstrap
     2. Designa applikationen
-    3. Testa design / responsivitet
+    3. Ta fram componenter / funktioner för home, login, register, courses, course, about, disclaimer, search-result, user-dashboard, my-courses, course-lessons/lesson, purchase-course, logout, admin-dashboard
+    4. Ordna PWA och deployment
+    5. Om tid finns, ta även fram komponent för profile och settings
+    6. Testa design / responsivitet
+
+    Datum: 2023-11-01
+    -----------------
+    * Skapat componenter för home, login, register, about, disclaimer, user-dashboard, courses
+    * Skapat mainTemplate och infoTemplate
+    * Säkerställt responsivitet för skapade komponenter
+    * Lagt på vissa designmoment på skapade komponenter
+    * Skapat router / routes i frontend
+    * Skapat service för fetchCourses
 
 ## Utveckling - Sprint 4
 
