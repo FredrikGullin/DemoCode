@@ -8,6 +8,7 @@ import DashboardUser from "../components/dashboardUser/dashboardUser";
 import Login from "../components/login/login";
 import Register from "../components/register/register";
 import HeroText from "../components/hero-text/heroText";
+import Course from "../components/course/course";
 
 const router = (
   <Routes>
@@ -20,6 +21,7 @@ const router = (
       }
     />
     <Route path="/courses" element={<Courses></Courses>} />
+    <Route path="/courses/:id" element={<Course courseId={""}></Course>} />
     <Route
       path="/login"
       element={

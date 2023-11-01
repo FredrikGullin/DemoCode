@@ -5,7 +5,9 @@ const CourseSchema = new Schema<CourseInterface>(
   {
     course_id: String,
     course_name: String,
+    course_slogan: String,
     course_info: String,
+    course_price: String,
     course_picture: String,
     lessons: [
       {

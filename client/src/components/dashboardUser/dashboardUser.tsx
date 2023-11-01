@@ -54,7 +54,7 @@ const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
           icon={faGraduationCap}
           label="My Courses"
           as={Link}
-          to="/"
+          to="/courses"
           className="dashboard-link"
         />
         <DashboardOption
