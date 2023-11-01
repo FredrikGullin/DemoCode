@@ -1,14 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import MainTemplate from "../views/main-template/mainTemplate";
 import InfoTemplate from "../views/info-template/infoTemplate";
+import HeroText from "../components/hero-text/heroText";
 import Courses from "../components/courses/courses";
+import Course from "../components/course/course";
+import SearchResult from "../components/searchResult/searchResult";
 import About from "../components/about/about";
 import Disclaimer from "../components/disclaimer/disclaimer";
-import DashboardUser from "../components/dashboardUser/dashboardUser";
 import Login from "../components/login/login";
 import Register from "../components/register/register";
-import HeroText from "../components/hero-text/heroText";
-import Course from "../components/course/course";
+import DashboardUser from "../components/dashboardUser/dashboardUser";
 
 const router = (
   <Routes>
@@ -22,6 +23,7 @@ const router = (
     />
     <Route path="/courses" element={<Courses></Courses>} />
     <Route path="/courses/:id" element={<Course courseId={""}></Course>} />
+    <Route path="/search-results" element={<SearchResult></SearchResult>} />
     <Route
       path="/login"
       element={

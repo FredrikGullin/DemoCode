@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import "./about.css";
-import aboutImage from "../../assets/about-pic.jpg";
 
 const About: React.FC = () => {
   return (
@@ -11,7 +10,7 @@ const About: React.FC = () => {
           <h1>About Us</h1>
           <p>
             Welcome to Appeggio, a harmonious platform dedicated to music
-            enthusiasts and budding musicians.
+            enthusiasts and aspiring musicians.
             <br />
             <br />
             Whether you're picking up an instrument for the first time or
@@ -43,9 +42,6 @@ const About: React.FC = () => {
             let's make music together!
           </p>
         </div>
-        {/* <div className="about-image-wrap">
-          <img src={aboutImage} alt="neon sign" className="about-image" />
-        </div> */}
       </div>
     </Container>
   );
