@@ -43,9 +43,9 @@ const About: React.FC = () => {
             let's make music together!
           </p>
         </div>
-        <div className="about-image-wrap">
+        {/* <div className="about-image-wrap">
           <img src={aboutImage} alt="neon sign" className="about-image" />
-        </div>
+        </div> */}
       </div>
     </Container>
   );

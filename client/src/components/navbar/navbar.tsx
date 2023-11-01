@@ -20,7 +20,7 @@ const AppNavbar: React.FC = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link as={Link} to="/courses">
               Courses
             </Nav.Link>
             <NavDropdown title="Student" id="navbarScrollingDropdown">

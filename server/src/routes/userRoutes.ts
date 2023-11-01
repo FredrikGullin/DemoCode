@@ -11,27 +11,31 @@ import userLogin from "../controllers/user_controllers/userLoginController";
 import userLogout from "../controllers/user_controllers/userLogoutController";
 import getOwnedCourses from "../controllers/user_controllers/getUserCoursesController";
 
-export const current = Router();
-export const userDelete = Router();
-export const userGet = Router();
-export const usersGet = Router();
-export const userRegister = Router();
-export const userUpdate = Router();
-export const loginUser = Router();
-export const logoutUser = Router();
-export const userCourses = Router();
+const userRouter = Router();
+
+// export const current = Router();
+// export const userDelete = Router();
+// export const userGet = Router();
+// export const usersGet = Router();
+// export const userRegister = Router();
+// export const userUpdate = Router();
+// export const loginUser = Router();
+// export const logoutUser = Router();
+// export const userCourses = Router();
 
 //@Access Public
-userRegister.post("/users/register", registerUser);
-loginUser.post("/users/login", userLogin);
+userRouter.post("/users/register", registerUser);
+userRouter.post("/users/login", userLogin);
 
 //@Access Private
-current.get("/users/current", auth, currentUser);
-logoutUser.post("/users/logout", auth, userLogout);
-userGet.get("/users/:id", auth, getUser);
-userUpdate.put("/users/update/:id", auth, updateUser);
-userCourses.get("/users/:id/courses", auth, getOwnedCourses);
+userRouter.get("/users/current", auth, currentUser);
+userRouter.post("/users/logout", auth, userLogout);
+userRouter.get("/users/:id", auth, getUser);
+userRouter.put("/users/update/:id", auth, updateUser);
+userRouter.get("/users/:id/courses", auth, getOwnedCourses);
 
 //@Access Admin
-usersGet.get("/admin/users", adminLock, getUsers);
-userDelete.delete("/admin/users/delete/:id", adminLock, deleteUser);
+userRouter.get("/admin/users", adminLock, getUsers);
+userRouter.delete("/admin/users/delete/:id", adminLock, deleteUser);
+
+export default userRouter;

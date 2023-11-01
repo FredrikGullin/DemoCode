@@ -1,8 +1,6 @@
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  flex-shrink: 0; /* Prevent the footer from shrinking */
+  width: 100%; /* Full width */
   z-index: 10;
 }
 
@@ -55,15 +53,4 @@ a:hover {
 hr {
   margin: 10px 20%;
   border-top: 1px solid #fff;
-}
-
-/* For larger screens */
-@media (min-width: 769px) {
-  footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    opacity: 0.7;
-  }
 }

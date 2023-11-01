@@ -3,7 +3,7 @@
   max-width: 70%;
   margin: 0 auto;
   align-items: center;
-  padding-top: 4.4rem;
+  padding-top: 2rem;
 }
 
 .disclaimer-text-section {
@@ -13,6 +13,14 @@
   padding-right: 20px;
   font-size: 1.2rem;
   overflow-y: auto;
+}
+
+.disclaimer-text-section h2 {
+  text-decoration: underline;
+}
+
+.disclaimer-text-section p {
+  font-size: 1rem;
 }
 
 .disclaimer-image-wrap {

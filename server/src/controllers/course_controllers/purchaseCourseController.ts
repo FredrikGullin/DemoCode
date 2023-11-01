@@ -4,7 +4,6 @@ import jwt, { Secret, JwtPayload } from "jsonwebtoken";
 import dotenv from "dotenv";
 import { redisClient } from "../../../config/redisConnection";
 import { UserModel } from "../../models/userModel";
-import { courseCreate } from "../../routes/courseRoutes";
 
 dotenv.config();
 

@@ -2,7 +2,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 233px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
