@@ -24,7 +24,7 @@ const Register: React.FC = () => {
       navigate("/");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        toast.error(error.message);
+        toast.error("Registration failed!");
         console.log(error.message);
       } else {
         console.log(error);
