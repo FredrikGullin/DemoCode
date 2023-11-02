@@ -96,4 +96,20 @@
     text-shadow: 1px 1px 3px rgba(214, 15, 15);
     color: rgb(255, 136, 0);
   }
+
+  .list-container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .course-image {
+    min-width: 100%;
+  }
+
+  @media (max-width: 420px) {
+    .list-container {
+      min-width: 100%;
+      margin: 0 auto;
+    }
+  }
 }
