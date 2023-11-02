@@ -1,16 +1,35 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Button, Form, FormGroup, Container, Row, Col } from "react-bootstrap";
+import registerUser from "../../services/registerUser";
 import "./register.css";
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    // Implement register logic here
-    console.log("Username:", username, "Email:", email, "Password:", password);
+
+    try {
+      const response = await registerUser({ username, email, password });
+      console.log(response);
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      toast.success("User registrated!");
+      navigate("/");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+        console.log(error.message);
+      } else {
+        console.log(error);
+      }
+    }
   };
 
   return (
