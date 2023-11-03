@@ -13,7 +13,7 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
   try {
     const user = await UserModel.findOne({ email: req.body.email });
     if (user == null) {
-      res.send("Login failed!");
+      res.status(401).json({ message: "Invalid email or password" });
     } else {
       const valid = await bcrypt.compare(req.body.password, user.password);
       if (valid) {
@@ -25,7 +25,7 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
           owned_courses: user.owned_courses,
         };
         const accessToken = jwt.sign(validUser, SECRET_KEY, {
-          expiresIn: "10m",
+          expiresIn: "1h",
         });
         res.json({
           accessToken: accessToken,
@@ -35,6 +35,8 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
           role: user.role,
           owned_courses: user.owned_courses,
         });
+      } else {
+        res.status(401).json({ message: "Invalid email or password" });
       }
     }
   } catch (err) {
