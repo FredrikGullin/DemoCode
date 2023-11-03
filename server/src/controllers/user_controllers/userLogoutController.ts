@@ -19,6 +19,7 @@ export const userLogout = async (req: Request, res: Response) => {
     if (token) {
       await storeRevokedToken(token);
       res.send("Token added to revoked-list!");
+      console.log("Token added to revoked-list!");
     } else {
       res.status(400).json({ message: "Token not provided!" });
     }

@@ -4,4 +4,5 @@ export type DashboardOptionProps = {
   className?: string;
   to?: string;
   as?: any;
+  onClick?: () => void;
 };

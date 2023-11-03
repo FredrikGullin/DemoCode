@@ -39,7 +39,7 @@ const Login: React.FC = () => {
       if (error instanceof Error) {
         toast.error(error.message);
       } else {
-        toast.error("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again!");
       }
     }
   };
