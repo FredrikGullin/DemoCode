@@ -43,7 +43,7 @@ const Register: React.FC = () => {
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter your username..."
+                  placeholder="Username..."
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
@@ -53,7 +53,7 @@ const Register: React.FC = () => {
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Enter your email..."
+                  placeholder="Email..."
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -63,7 +63,7 @@ const Register: React.FC = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Enter your password..."
+                  placeholder="Password..."
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
