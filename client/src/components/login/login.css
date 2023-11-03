@@ -14,13 +14,18 @@
   flex-direction: column;
   max-height: 50vh;
   max-width: 500px !important;
-  background-color: rgba(121, 117, 117, 0.8);
+  background-color: rgba(255, 255, 255);
   padding: 20px;
   border-radius: 10px;
 }
 
+.login-container h2 {
+  color: gray;
+}
+
 label {
   margin-top: 10px;
+  color: gray;
 }
 
 .login-button {
