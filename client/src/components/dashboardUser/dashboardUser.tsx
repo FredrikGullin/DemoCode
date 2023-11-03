@@ -1,5 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import logoutUser from "../../services/logoutUser";
 import { DashboardProps } from "../../interfaces/dashboardInterface";
 import { DashboardOptionProps } from "../../interfaces/dashboardOptopionsInterface";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,6 +22,7 @@ const DashboardOption: React.FC<DashboardOptionProps> = ({
   as,
   to,
   className,
+  onClick,
 }) => {
   const Component = as || "div";
 
@@ -26,7 +30,11 @@ const DashboardOption: React.FC<DashboardOptionProps> = ({
     <div className="col-lg-4 col-md-6 col-sm-6 col-6 mb-4">
       <div className="card h-100">
         <div className="card-body text-center">
-          <Component className={`dashboard-option ${className}`} to={to}>
+          <Component
+            className={`dashboard-option ${className}`}
+            to={to}
+            onClick={onClick}
+          >
             <FontAwesomeIcon icon={icon} className="icon mb-3" size="3x" />
             <label className="card-text">{label}</label>
           </Component>
@@ -37,6 +45,22 @@ const DashboardOption: React.FC<DashboardOptionProps> = ({
 };
 
 const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
+  const token = sessionStorage.getItem("accessToken");
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    if (token) {
+      try {
+        await logoutUser(token);
+        sessionStorage.removeItem("accessToken");
+        navigate("/");
+        toast.success("You've been logged out!");
+      } catch (error) {
+        toast.error("An error occured while loggin out!");
+      }
+    }
+  };
+
   return (
     <>
       <div className="welcome-message mb-5">
@@ -84,6 +108,7 @@ const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
           as={Link}
           to="/"
           className="dashboard-link"
+          onClick={handleLogout}
         />
       </div>
     </>
