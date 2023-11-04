@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import connectDb from "./config/dbConnection";
 import { routes } from "./src/routes/routerIndex";
+import { errorHandler } from "./src/middleware/errorHandler";
+import connectDb from "./config/dbConnection";
 import connectRedis, {
   cleanRevokedList,
   getRevokedList,
@@ -24,6 +25,7 @@ app.use(
   })
 );
 app.use(routes);
+app.use(errorHandler);
 
 // App public routes
 // app.use("/", routes);
