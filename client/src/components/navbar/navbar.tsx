@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import logoutUser from "../../services/logoutUser";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -14,6 +15,21 @@ const AppNavbar: React.FC = () => {
   const [navbarExpanded, setNavbarExpanded] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  const token = sessionStorage.getItem("accessToken");
+  const isLoggedIn = Boolean(token);
+
+  const handleLogout = async () => {
+    if (token) {
+      try {
+        await logoutUser(token);
+        sessionStorage.removeItem("accessToken");
+        navigate("/");
+        toast.success("You've been logged out!");
+      } catch (error) {
+        toast.error("An error occured while loggin out!");
+      }
+    }
+  };
 
   const handleNavLinkClick = () => {
     setNavbarExpanded(false);
@@ -44,7 +60,11 @@ const AppNavbar: React.FC = () => {
       className="bg-body-tertiary fixed-top"
     >
       <Container fluid>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand
+          as={Link}
+          to={isLoggedIn ? "/dashboard" : "/"}
+          onClick={handleNavLinkClick}
+        >
           Appeggio
         </Navbar.Brand>
         <Navbar.Toggle
@@ -53,8 +73,8 @@ const AppNavbar: React.FC = () => {
         />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link as={Link} to="/" onClick={handleNavLinkClick}>
-              Home
+            <Nav.Link as={Link} to={"/news"} onClick={handleNavLinkClick}>
+              News
             </Nav.Link>
             <Nav.Link as={Link} to="/courses" onClick={handleNavLinkClick}>
               Courses
@@ -65,30 +85,70 @@ const AppNavbar: React.FC = () => {
               show={dropdownOpen}
               onToggle={handleDropdownToggle}
             >
-              <NavDropdown.Item
-                as={Link}
-                to="/"
-                onClick={handleNavLinkClick}
-                disabled
-              >
-                Profile
-              </NavDropdown.Item>
-              <NavDropdown.Item
-                as={Link}
-                to="/"
-                onClick={handleNavLinkClick}
-                disabled
-              >
-                Dashboard
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item
-                as={Link}
-                to="/login"
-                onClick={handleNavLinkClick}
-              >
-                Login
-              </NavDropdown.Item>
+              {isLoggedIn ? (
+                <>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/profile"
+                    onClick={handleNavLinkClick}
+                  >
+                    Profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/courses"
+                    onClick={handleNavLinkClick}
+                  >
+                    My courses
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/dashboard"
+                    onClick={handleNavLinkClick}
+                  >
+                    Dashboard
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item onClick={handleLogout}>
+                    Logout
+                  </NavDropdown.Item>
+                </>
+              ) : (
+                <>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/"
+                    onClick={handleNavLinkClick}
+                    disabled
+                  >
+                    Profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/courses"
+                    onClick={handleNavLinkClick}
+                    disabled
+                  >
+                    My courses
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/dashboard"
+                    onClick={handleNavLinkClick}
+                    disabled
+                  >
+                    Dashboard
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/login"
+                    onClick={handleNavLinkClick}
+                  >
+                    Login
+                  </NavDropdown.Item>
+                </>
+              )}
             </NavDropdown>
             <Nav.Link as={Link} to="/about" onClick={handleNavLinkClick}>
               About
