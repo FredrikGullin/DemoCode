@@ -30,10 +30,10 @@ courseRouter.get("/courses", getCourses);
 courseRouter.post("/courses/search", searchCourse);
 
 //@Access Private
-courseRouter.get("/courses/:id/lessons", auth, paywall, getLessons);
 courseRouter.put("/courses/:id/purchase", auth, purchaseCourse);
 
 //@Access Paywall
+courseRouter.get("/courses/:id/lessons", auth, paywall, getLessons);
 courseRouter.get("/courses/:id/lessons/:_id", auth, paywall, getLesson);
 
 //@Access Admin

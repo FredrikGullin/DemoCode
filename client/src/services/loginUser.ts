@@ -13,7 +13,7 @@ const loginUser = async (userData: { email: string; password: string }) => {
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       const serverErrorMessage = error.response.data.message;
-      throw new Error(serverErrorMessage || "Login error. Please try again.");
+      throw new Error(serverErrorMessage || "Login error. Please try again!");
     } else {
       throw new Error("Login error. Please try again.");
     }

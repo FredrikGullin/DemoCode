@@ -1,0 +1,99 @@
+.purchase-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 80%;
+  min-height: calc(100vh - 233px);
+  margin: 0 auto;
+}
+
+.purchase-card-container {
+  padding: 10px;
+}
+
+.purchase-link {
+  color: black;
+  text-decoration: none;
+}
+
+.purchase-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.purchase-message {
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.purchase-price {
+  color: rgb(209, 26, 26);
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.form-container {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.custom-radio .form-check label {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.custom-radio .form-check {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .purchase-container {
+    padding: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .purchase-title {
+    font-size: 1.5rem;
+  }
+
+  .form-container {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .purchase-container {
+    max-width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  .purchase-image {
+    max-width: 500px;
+  }
+
+  .purchase-title {
+    font-size: 1.8rem;
+  }
+
+  .form-container {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .purchase-container {
+    min-width: 100%;
+  }
+
+  .purchase-title {
+    font-size: 1.5rem;
+  }
+}

@@ -56,7 +56,7 @@ export const purchaseCourse = asyncHandler(
             owned_courses: decoded.owned_courses,
           },
           SECRET_KEY,
-          { expiresIn: "10m" }
+          { expiresIn: "1h" }
         );
 
         res.status(200).json({
