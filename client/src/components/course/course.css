@@ -39,6 +39,10 @@
   margin-left: 20px;
 }
 
+.lessons-link {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
   .course-container {
     max-width: calc(100vh - 200px);

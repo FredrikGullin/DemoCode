@@ -111,7 +111,7 @@ const AppNavbar: React.FC = () => {
                     Dashboard
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={handleLogout}>
+                  <NavDropdown.Item as={Link} to="/" onClick={handleLogout}>
                     Logout
                   </NavDropdown.Item>
                 </>

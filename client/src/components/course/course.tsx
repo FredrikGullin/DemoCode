@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 import fetchCourse from "../../services/fetchCourse";
 import { CourseInterface } from "../../interfaces/courseInterface";
 import { Button } from "react-bootstrap";
 import "./course.css";
 
 const Course: React.FC<{ courseId: string }> = () => {
+  const { owned_courses } = useAuth();
   const { id } = useParams<{ id: string }>();
   const [course, setCourse] = useState<CourseInterface | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const isLoggedIn = Boolean(sessionStorage.getItem("accessToken"));
+  const isOwned = owned_courses?.includes(id!);
 
   useEffect(() => {
     const getCourse = async () => {
@@ -51,34 +54,47 @@ const Course: React.FC<{ courseId: string }> = () => {
               </div>
               <h3 className="cousre-text">{course?.course_slogan}</h3>
               <div className="buy-section-sm">
-                <p className="course-price">
-                  Price: {course?.course_price} USD{" "}
-                  <Button
-                    as={Link as any}
-                    to={`/courses/${id}/purchase`}
-                    variant="success"
-                    className="buy-button"
-                  >
-                    BUY
-                  </Button>
-                </p>
+                {!isOwned && (
+                  <p className="course-price">
+                    Price: {course?.course_price} USD{" "}
+                    {isLoggedIn && (
+                      <Button
+                        as={Link as any}
+                        to={`/courses/${id}/purchase`}
+                        variant="success"
+                        className="buy-button"
+                      >
+                        BUY
+                      </Button>
+                    )}
+                  </p>
+                )}
               </div>
               <p className="course-info">{course?.course_info}</p>
               <div className="buy-section">
-                <p className="course-price">
-                  Price: {course?.course_price} USD{" "}
-                  {isLoggedIn && (
-                    <Button
-                      as={Link as any}
-                      to={`/courses/${id}/purchase`}
-                      variant="success"
-                      className="buy-button"
-                    >
-                      BUY
-                    </Button>
-                  )}
-                </p>
+                {!isOwned && (
+                  <p className="course-price">
+                    Price: {course?.course_price} USD{" "}
+                    {isLoggedIn && (
+                      <Button
+                        as={Link as any}
+                        to={`/courses/${id}/purchase`}
+                        variant="success"
+                        className="buy-button"
+                      >
+                        BUY
+                      </Button>
+                    )}
+                  </p>
+                )}
               </div>
+              {isOwned && (
+                <div className="lessons-link">
+                  <Link to="/dashboard">
+                    <Button>Go to lessons</Button>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
           <div className="col-md-4">

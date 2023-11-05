@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../context/authContext";
 import { CourseInterface } from "../../interfaces/courseInterface";
 import fetchOwnedCourses from "../../services/fetchUserCourses";
@@ -25,7 +27,16 @@ const MyCourses: React.FC = () => {
         const data = await fetchOwnedCourses(accessToken, userId);
         setCourses(data);
       } catch (err) {
-        setError("Failed to fetch courses!");
+        if (courses.length === 0) {
+          toast.info("You don't own any courses yet!");
+          return (
+            <>
+              <div style={{ minHeight: "calc(100vh - 233px)" }}></div>
+            </>
+          );
+        } else {
+          setError("Failed fetching courses!");
+        }
       } finally {
         setLoading(false);
       }
@@ -47,39 +58,41 @@ const MyCourses: React.FC = () => {
 
   return (
     <>
-      <div className="my-courses-hero-section-lg">
-        <h1>My Courses</h1>
-      </div>
-      <div className="container mt-4">
-        <div className="list-container">
-          {courses.map((course) => (
-            <Link
-              to={`/courses/${course._id}`}
-              className="text-decoration-none"
-              key={course._id}
-            >
-              <div className="card mb-3">
-                <div className="row g-0">
-                  <div className="col-md-4">
-                    <img
-                      src={course.course_picture}
-                      alt={course.course_name}
-                      className="img-fluid rounded-start course-image"
-                    />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <h2 className="card-title">{course.course_name}</h2>
-                      <h5 className="card-slogan">{course.course_slogan}</h5>
-                      <div className="card-info">
-                        <p>{course.course_info}</p>
+      <div className="my-courses-container">
+        <div className="my-courses-hero-section-lg">
+          <h1>My Courses</h1>
+        </div>
+        <div className="container mt-4">
+          <div className="list-container">
+            {courses.map((course) => (
+              <Link
+                to={`/courses/${course._id}`}
+                className="text-decoration-none"
+                key={course._id}
+              >
+                <div className="card mb-3">
+                  <div className="row g-0">
+                    <div className="col-md-4">
+                      <img
+                        src={course.course_picture}
+                        alt={course.course_name}
+                        className="img-fluid rounded-start course-image"
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h2 className="card-title">{course.course_name}</h2>
+                        <h5 className="card-slogan">{course.course_slogan}</h5>
+                        <div className="card-info">
+                          <p>{course.course_info}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </>
