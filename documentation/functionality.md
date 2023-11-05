@@ -5,8 +5,10 @@
     Appeggio
 
 ## Teknisk information
+
     * Språk: TypeScript
     * Databas: MongoDB
+    * Server-cache: REDIS
     * Backend: Node / Express
     * Frontend: React
     * Design: Bootstrap / CSS
@@ -28,7 +30,6 @@
 
     * Som besökare ska man kunna se ett utbud av plattformens tillgängliga kurser
     * Som besökare ska man kunna registrera sig som användare
-    
 
 ### Registrerad användare
 

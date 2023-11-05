@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../context/authContext";
 import handlePurchaseCourse from "../../services/purchaseCourse";
 import fetchCourse from "../../services/fetchCourse";
 import { CourseInterface } from "../../interfaces/courseInterface";
@@ -13,11 +14,13 @@ type RouteParams = {
 };
 
 const CheckoutPurchase: React.FC = () => {
+  const { accessToken, setAuthData } = useAuth();
   const [purchaseStatus, setPurchaseStatus] = useState<string | null>(null);
   const { id } = useParams<RouteParams>();
   const [course, setCourse] = useState<CourseInterface | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCourse = async () => {
@@ -43,9 +46,7 @@ const CheckoutPurchase: React.FC = () => {
 
   const handlePurchase = async () => {
     try {
-      const token = sessionStorage.getItem("accessToken");
-
-      if (!token) {
+      if (!accessToken) {
         throw new Error("Authentication token is missing!");
       }
 
@@ -53,14 +54,21 @@ const CheckoutPurchase: React.FC = () => {
         throw new Error("Course ID is missing!");
       }
 
-      const responseData = await handlePurchaseCourse(id, token);
-
+      const responseData = await handlePurchaseCourse(
+        id,
+        accessToken,
+        setAuthData
+      );
+      console.log("Response data: ", responseData);
+      console.log("New token: ", responseData.accessToken);
       if (responseData && responseData.accessToken) {
         sessionStorage.setItem("accessToken", responseData.accessToken);
+
         const successMessage =
           "Course purchased successfully and was added to 'My courses'!";
         setPurchaseStatus(successMessage);
         toast.success(successMessage);
+        navigate("/my-courses");
       }
     } catch (error: any) {
       let errorMessage = "Something went wrong!";
@@ -78,6 +86,7 @@ const CheckoutPurchase: React.FC = () => {
       console.log(purchaseStatus);
     }
   };
+
   return (
     <>
       <div className="purchase-container">

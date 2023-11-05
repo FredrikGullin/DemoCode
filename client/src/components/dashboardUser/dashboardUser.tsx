@@ -15,6 +15,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import "./dashboardUser.css";
+import { useAuth } from "../../context/authContext";
 
 const DashboardOption: React.FC<DashboardOptionProps> = ({
   icon,
@@ -47,12 +48,13 @@ const DashboardOption: React.FC<DashboardOptionProps> = ({
 const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
   const token = sessionStorage.getItem("accessToken");
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleLogout = async () => {
     if (token) {
       try {
         await logoutUser(token);
-        sessionStorage.removeItem("accessToken");
+        logout();
         navigate("/");
         toast.success("You've been logged out!");
       } catch (error) {
@@ -78,7 +80,7 @@ const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
           icon={faGraduationCap}
           label="My Courses"
           as={Link}
-          to="/courses"
+          to="/my-courses"
           className="dashboard-link"
         />
         <DashboardOption
