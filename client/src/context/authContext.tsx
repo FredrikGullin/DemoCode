@@ -1,8 +1,16 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useRef,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
 import { AuthStateInterface } from "../interfaces/authState";
 
 interface AuthContextProps extends AuthStateInterface {
   setAuthData: (data: AuthStateInterface) => void;
+  logout: () => void;
 }
 
 interface AuthContextProviderProps {
@@ -18,6 +26,8 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     accessToken: sessionStorage.getItem("accessToken") || null,
   });
 
+  const logoutTimerId = useRef<NodeJS.Timeout | null>(null);
+
   const getTokenExpireTime = (token: string): number => {
     try {
       const decoded: any = JSON.parse(atob(token.split(".")[1]));
@@ -28,24 +38,52 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     }
   };
 
+  const logout = () => {
+    if (logoutTimerId.current) {
+      clearTimeout(logoutTimerId.current);
+    }
+    sessionStorage.removeItem("accessToken");
+    setAuthData({
+      accessToken: null,
+      userId: undefined,
+      username: undefined,
+      email: undefined,
+      role: undefined,
+      owned_courses: undefined,
+    });
+  };
+
   const updateAuthData = (data: AuthStateInterface) => {
+    if (logoutTimerId.current) {
+      clearTimeout(logoutTimerId.current);
+    }
+
     if (data.accessToken) {
       sessionStorage.setItem("accessToken", data.accessToken);
 
       const remainingTime = getTokenExpireTime(data.accessToken);
-      setTimeout(() => {
-        setAuthData({ accessToken: null });
-        sessionStorage.removeItem("accessToken");
+
+      logoutTimerId.current = setTimeout(() => {
+        logout();
       }, remainingTime);
     } else {
-      setAuthData({ accessToken: null });
-      sessionStorage.removeItem("accessToken");
+      logout();
     }
+
     setAuthData(data);
   };
 
+  useEffect(() => {
+    const token = sessionStorage.getItem("accessToken");
+    if (token) {
+      setAuthData({ ...authData, accessToken: token });
+    }
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ ...authData, setAuthData: updateAuthData }}>
+    <AuthContext.Provider
+      value={{ ...authData, setAuthData: updateAuthData, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -54,7 +92,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used with an AuthContextProvider!");
+    throw new Error("useAuth must be used within an AuthContextProvider!");
   }
   return context;
 };

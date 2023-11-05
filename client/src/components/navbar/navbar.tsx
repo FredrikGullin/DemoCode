@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import logoutUser from "../../services/logoutUser";
+import { useAuth } from "../../context/authContext";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -17,12 +18,13 @@ const AppNavbar: React.FC = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("accessToken");
   const isLoggedIn = Boolean(token);
+  const { logout } = useAuth();
 
   const handleLogout = async () => {
     if (token) {
       try {
         await logoutUser(token);
-        sessionStorage.removeItem("accessToken");
+        logout();
         navigate("/");
         toast.success("You've been logged out!");
       } catch (error) {
@@ -96,10 +98,10 @@ const AppNavbar: React.FC = () => {
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     as={Link}
-                    to="/courses"
+                    to="/my-courses"
                     onClick={handleNavLinkClick}
                   >
-                    My courses
+                    My Courses
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     as={Link}
@@ -125,11 +127,11 @@ const AppNavbar: React.FC = () => {
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     as={Link}
-                    to="/courses"
+                    to="/my-courses"
                     onClick={handleNavLinkClick}
                     disabled
                   >
-                    My courses
+                    My Courses
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     as={Link}

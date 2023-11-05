@@ -53,7 +53,7 @@ export const purchaseCourse = asyncHandler(
             username: decoded.username,
             email: decoded.email,
             role: decoded.role,
-            owned_courses: decoded.owned_courses,
+            owned_courses: user?.owned_courses,
           },
           SECRET_KEY,
           { expiresIn: "1h" }
@@ -62,6 +62,11 @@ export const purchaseCourse = asyncHandler(
         res.status(200).json({
           message: "Course purchased successfully!",
           accessToken: updatedToken,
+          userId: decoded.userId,
+          username: decoded.username,
+          email: decoded.email,
+          role: decoded.role,
+          owned_courses: user?.owned_courses,
         });
       }
     } catch (err) {

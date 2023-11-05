@@ -127,7 +127,7 @@ _på bekostnad av kvalité._
 
 ### Deadline
 
-    Datum: N/A
+    Datum: 2023-11-05
 
 ### Mål
 
@@ -153,17 +153,35 @@ _på bekostnad av kvalité._
     * Skapat router / routes i frontend
     * Skapat service för fetchCourses
 
+    Datum: 2023-11-05
+    -----------------
+    * Skapat componenter och services för authContext (context), logout, course, purchaseCourse, myCourses, 404
+    * Patchat nav och course med funktion för att dölja / visa innehåll beroende på om man är inloggad eller ej
+    * SKapa errorHandler i backend
+    * patchat purchaseCourseController i backend
+    * Styleat flera componenter
+
+    Återstående tasks:
+    * Courses/lessons/lesson component och service
+    * Admin-routes + (CRUD)
+    * Profile component och service för radera kontro
+    * NewsFeed component och service (behöver även sättas up i backend)
+    * PWA-setup
+    * Depoloyment
+    * Dokumentation
+    * Inlämning
+
 ## Utveckling - Sprint 4
 
 ### Deadline
 
-    Datum: N/A
+    Datum: 2023-11-10
 
 ### Mål
 
     Under denna sprint planerar jag att implementera "PWA" samt testa applikationen och färdigställa.
 
-    Sprinten pågår under perioden: 2023-XX-XX - 2023-XX-XX
+    Sprinten pågår under perioden: 2023-11-06 - 2023-11-10
 
 ### Tasks
 
