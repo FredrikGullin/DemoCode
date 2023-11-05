@@ -12,6 +12,7 @@ import Disclaimer from "../components/disclaimer/disclaimer";
 import Login from "../components/login/login";
 import Register from "../components/register/register";
 import DashboardUser from "../components/dashboardUser/dashboardUser";
+import CheckoutPurchase from "../components/checkoutPurchase/checkoutPurchase";
 
 const RouterComponent: React.FC = () => {
   const { username } = useAuth();
@@ -28,6 +29,14 @@ const RouterComponent: React.FC = () => {
       />
       <Route path="/courses" element={<Courses></Courses>} />
       <Route path="/courses/:id" element={<Course courseId={""}></Course>} />
+      <Route
+        path="/courses/:id/purchase"
+        element={
+          <ProtectedRoute>
+            <CheckoutPurchase />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/search-results" element={<SearchResult></SearchResult>} />
       <Route
         path="/login"
@@ -75,7 +84,7 @@ const RouterComponent: React.FC = () => {
         path="*"
         element={
           <InfoTemplate>
-            <p>404: Page Not Found</p>
+            <h2>404: Page Not Found</h2>
           </InfoTemplate>
         }
       />

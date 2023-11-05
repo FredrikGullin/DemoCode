@@ -14,6 +14,7 @@ const logoutUser = async (token: string) => {
       }
     );
     sessionStorage.removeItem("accessToken");
+    window.location.reload();
   } catch (error) {
     throw new Error("There was an error logging out!");
   }

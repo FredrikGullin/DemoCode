@@ -11,6 +11,7 @@ const Course: React.FC<{ courseId: string }> = () => {
   const [course, setCourse] = useState<CourseInterface | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const isLoggedIn = Boolean(sessionStorage.getItem("accessToken"));
 
   useEffect(() => {
     const getCourse = async () => {
@@ -54,7 +55,7 @@ const Course: React.FC<{ courseId: string }> = () => {
                   Price: {course?.course_price} USD{" "}
                   <Button
                     as={Link as any}
-                    to="/"
+                    to={`/courses/${id}/purchase`}
                     variant="success"
                     className="buy-button"
                   >
@@ -66,14 +67,16 @@ const Course: React.FC<{ courseId: string }> = () => {
               <div className="buy-section">
                 <p className="course-price">
                   Price: {course?.course_price} USD{" "}
-                  <Button
-                    as={Link as any}
-                    to="/"
-                    variant="success"
-                    className="buy-button"
-                  >
-                    BUY
-                  </Button>
+                  {isLoggedIn && (
+                    <Button
+                      as={Link as any}
+                      to={`/courses/${id}/purchase`}
+                      variant="success"
+                      className="buy-button"
+                    >
+                      BUY
+                    </Button>
+                  )}
                 </p>
               </div>
             </div>
