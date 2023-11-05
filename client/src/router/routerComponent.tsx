@@ -14,6 +14,7 @@ import Register from "../components/register/register";
 import DashboardUser from "../components/dashboardUser/dashboardUser";
 import CheckoutPurchase from "../components/checkoutPurchase/checkoutPurchase";
 import MyCourses from "../components/myCourses/myCourses";
+import CourseLessons from "../components/lessons/lessons";
 
 const RouterComponent: React.FC = () => {
   const { username } = useAuth();
@@ -86,6 +87,14 @@ const RouterComponent: React.FC = () => {
         element={
           <ProtectedRoute>
             <MyCourses />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/my-courses/:id/lessons"
+        element={
+          <ProtectedRoute>
+            <CourseLessons courseId={""} />
           </ProtectedRoute>
         }
       />

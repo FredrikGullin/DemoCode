@@ -5,12 +5,10 @@ export interface CourseInterface {
   course_info: string;
   course_price: string;
   course_picture: string;
-  lessons: [
-    {
-      _id: string;
-      lesson_title: string;
-      description: string;
-      video_url: string;
-    }
-  ];
+  lessons: Array<{
+    _id: string;
+    lesson_title: string;
+    description: string;
+    video_url: string;
+  }>;
 }

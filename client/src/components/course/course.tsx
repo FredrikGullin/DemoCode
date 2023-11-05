@@ -90,7 +90,7 @@ const Course: React.FC<{ courseId: string }> = () => {
               </div>
               {isOwned && (
                 <div className="lessons-link">
-                  <Link to="/dashboard">
+                  <Link to={`/my-courses/${course!._id}/lessons`}>
                     <Button>Go to lessons</Button>
                   </Link>
                 </div>
