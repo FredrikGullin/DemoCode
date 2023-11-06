@@ -12,7 +12,6 @@ const fetchLessons = async (token: string, courseId: string) => {
         },
       }
     );
-    console.log("Data from backend: ", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching lessons", error);

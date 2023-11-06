@@ -1,0 +1,54 @@
+.lesson-container {
+  min-height: calc(100vh - 233px);
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.lesson-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  max-width: 440px;
+}
+
+.lesson-video-wrapper {
+  display: flex;
+}
+
+.lesson-video-wrapper iframe {
+  min-height: 220px;
+  width: 440px;
+}
+
+.lesson-description {
+  max-width: 420px;
+  margin-top: 10px;
+}
+
+.lesson-back-button {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+  .lesson-container {
+    max-width: 90%;
+    padding: 10px;
+    overflow-x: hidden;
+    justify-content: center;
+  }
+
+  .lesson-video-wrapper iframe {
+    max-width: 300px;
+    max-height: 150px;
+    margin: 0;
+  }
+
+  .lesson-description {
+    max-width: 310px;
+  }
+
+  @media (max-width: 348px) {
+    .lesson-container {
+      min-width: 100%;
+    }
+  }
+}

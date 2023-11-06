@@ -56,7 +56,7 @@ export const purchaseCourse = asyncHandler(
             owned_courses: user?.owned_courses,
           },
           SECRET_KEY,
-          { expiresIn: "1h" }
+          { expiresIn: "2h" }
         );
 
         res.status(200).json({
