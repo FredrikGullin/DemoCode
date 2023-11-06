@@ -25,7 +25,7 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
           owned_courses: user.owned_courses,
         };
         const accessToken = jwt.sign(validUser, SECRET_KEY, {
-          expiresIn: "1h",
+          expiresIn: "2h",
         });
         res.json({
           accessToken: accessToken,

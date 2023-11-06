@@ -27,7 +27,6 @@ const CourseLessons: React.FC<{ courseId: string }> = () => {
       try {
         const lessonsData = await fetchLessons(accessToken, id!);
         if (isMounted) {
-          console.log("Data from frontend: ", lessonsData);
           setLessons(lessonsData);
         }
       } catch (error) {
@@ -62,8 +61,6 @@ const CourseLessons: React.FC<{ courseId: string }> = () => {
   if (!lessons) {
     return <div>There are no lessons for this course!</div>;
   }
-  console.log("Course-obj: ", lessons);
-  console.log("Before render: ", lessons);
 
   return (
     <>
@@ -74,7 +71,11 @@ const CourseLessons: React.FC<{ courseId: string }> = () => {
         <div className="container mt-4">
           <div className="list-container">
             {lessons.map((lesson: LessonInterface) => (
-              <Link to={"/"} className="text-decoration-none" key={lesson._id}>
+              <Link
+                to={`/my-courses/${id}/lessons/${lesson._id}`}
+                className="text-decoration-none"
+                key={lesson._id}
+              >
                 <div className="card mb-3">
                   <div className="row g-0">
                     <div className="lesson-pic-SM col-md-4">
