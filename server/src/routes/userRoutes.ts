@@ -28,7 +28,7 @@ userRouter.post("/users/register", registerUser);
 userRouter.post("/users/login", userLogin);
 
 //@Access Private
-userRouter.get("/users/current", auth, currentUser);
+// userRouter.get("/users/current", auth, currentUser);
 userRouter.post("/users/logout", auth, userLogout);
 userRouter.get("/users/:id", auth, getUser);
 userRouter.put("/users/update/:id", auth, updateUser);

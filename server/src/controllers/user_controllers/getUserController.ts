@@ -12,10 +12,11 @@ export const getUser = asyncHandler(async (req: Request, res: Response) => {
       res.status(404);
       throw new Error("User not found!");
     }
+
     res.status(200).json(user);
   } catch (err) {
     res.status(401);
-    throw new Error("Error fetching user!");
+    throw new Error("Server error fetching user!");
   }
 });
 

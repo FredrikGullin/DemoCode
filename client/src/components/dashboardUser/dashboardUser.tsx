@@ -47,6 +47,7 @@ const DashboardOption: React.FC<DashboardOptionProps> = ({
 
 const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
   const token = sessionStorage.getItem("accessToken");
+  const { userId } = useAuth();
   const navigate = useNavigate();
   const { logout } = useAuth();
 
@@ -73,7 +74,7 @@ const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
           icon={faUser}
           label="Profile"
           as={Link}
-          to="/"
+          to={`/profile/${userId}`}
           className="dashboard-link"
         />
         <DashboardOption
