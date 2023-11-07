@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import fetchCourse from "../../services/fetchCourse";
 import { CourseInterface } from "../../interfaces/courseInterface";

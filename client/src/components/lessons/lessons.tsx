@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import { extractVidID } from "../../services/extractVidID";
+import { extractVidID } from "../../utils/extractVidID";
 import fetchLessons from "../../services/fetchLessons";
 import { LessonInterface } from "../../interfaces/lessonInterface";
 import "./lessons.css";

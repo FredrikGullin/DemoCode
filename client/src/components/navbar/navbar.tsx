@@ -18,7 +18,7 @@ const AppNavbar: React.FC = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("accessToken");
   const isLoggedIn = Boolean(token);
-  const { logout } = useAuth();
+  const { logout, userId } = useAuth();
 
   const handleLogout = async () => {
     if (token) {
@@ -91,7 +91,7 @@ const AppNavbar: React.FC = () => {
                 <>
                   <NavDropdown.Item
                     as={Link}
-                    to="/profile"
+                    to={`/profile/${userId}`}
                     onClick={handleNavLinkClick}
                   >
                     Profile
