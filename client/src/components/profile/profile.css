@@ -39,3 +39,11 @@
 .info-card-link:hover {
   color: #0056b3;
 }
+
+.delete-button {
+  margin-right: 8px;
+}
+
+Button {
+  margin-right: 0.5rem !important; /* This should be the same value Bootstrap uses for 'me-2' */
+}

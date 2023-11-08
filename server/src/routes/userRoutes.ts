@@ -1,7 +1,6 @@
 import { Router } from "express";
 import auth from "../middleware/auth";
 import adminLock from "../middleware/adminLock";
-import currentUser from "../controllers/user_controllers/currentUserController";
 import deleteUser from "../controllers/user_controllers/deleteUserController";
 import getUser from "../controllers/user_controllers/getUserController";
 import getUsers from "../controllers/user_controllers/getUsersController";
@@ -28,14 +27,13 @@ userRouter.post("/users/register", registerUser);
 userRouter.post("/users/login", userLogin);
 
 //@Access Private
-// userRouter.get("/users/current", auth, currentUser);
 userRouter.post("/users/logout", auth, userLogout);
 userRouter.get("/users/:id", auth, getUser);
 userRouter.put("/users/update/:id", auth, updateUser);
 userRouter.get("/users/:id/courses", auth, getOwnedCourses);
+userRouter.delete("/users/delete/:id", auth, deleteUser);
 
 //@Access Admin
 userRouter.get("/admin/users", adminLock, getUsers);
-userRouter.delete("/admin/users/delete/:id", adminLock, deleteUser);
 
 export default userRouter;
