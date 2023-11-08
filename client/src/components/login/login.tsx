@@ -23,21 +23,30 @@ const Login: React.FC = () => {
       });
       console.log("Received:", response);
 
-      const { accessToken, userId, username, email, role, owned_courses } =
-        response;
+      sessionStorage.setItem("accessToken", response.accessToken);
+      sessionStorage.setItem("userId", response.userId);
+      sessionStorage.setItem("username", response.username);
+      sessionStorage.setItem("email", response.email);
+      sessionStorage.setItem("role", response.role);
+
       setAuthData({
-        accessToken,
-        userId,
-        username,
-        email,
-        role,
-        owned_courses,
+        accessToken: response.accessToken,
+        userId: response.userId,
+        username: response.username,
+        email: response.email,
+        role: response.role,
+        owned_courses: response.owned_courses,
       });
 
-      navigate("/dashboard");
+      if (response.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message);
+        toast.error("Login failed.");
+        console.error(error);
       } else {
         toast.error("An error occurred. Please try again!");
       }

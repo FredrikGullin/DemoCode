@@ -23,7 +23,11 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   children,
 }) => {
   const [authData, setAuthData] = useState<AuthStateInterface>({
-    accessToken: sessionStorage.getItem("accessToken") || null,
+    accessToken: sessionStorage.getItem("accessToken"),
+    userId: sessionStorage.getItem("userId") ?? undefined,
+    username: sessionStorage.getItem("username") ?? undefined,
+    email: sessionStorage.getItem("email") ?? undefined,
+    role: sessionStorage.getItem("role") ?? undefined,
   });
 
   const logoutTimerId = useRef<NodeJS.Timeout | null>(null);
