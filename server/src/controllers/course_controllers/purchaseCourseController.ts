@@ -7,7 +7,7 @@ import { UserModel } from "../../models/userModel";
 
 dotenv.config();
 
-export const SECRET_KEY: Secret = process.env.JWT_KEY as Secret;
+const SECRET_KEY: Secret = process.env.JWT_KEY as Secret;
 
 export const purchaseCourse = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {

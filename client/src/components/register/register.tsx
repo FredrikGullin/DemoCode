@@ -21,7 +21,7 @@ const Register: React.FC = () => {
       setEmail("");
       setPassword("");
       toast.success("User registrated!");
-      navigate("/");
+      navigate("/login");
     } catch (error: unknown) {
       if (error instanceof Error) {
         toast.error("Registration failed!");

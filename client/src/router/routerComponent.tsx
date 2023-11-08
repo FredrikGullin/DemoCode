@@ -17,6 +17,7 @@ import MyCourses from "../components/myCourses/myCourses";
 import CourseLessons from "../components/lessons/lessons";
 import Lesson from "../components/lesson/lesson";
 import Profile from "../components/profile/profile";
+import EditProfile from "../components/editProfile/editProfile";
 
 const RouterComponent: React.FC = () => {
   const { username } = useAuth();
@@ -81,6 +82,14 @@ const RouterComponent: React.FC = () => {
         element={
           <ProtectedRoute>
             <Profile id={""} />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile/edit/:id"
+        element={
+          <ProtectedRoute>
+            <EditProfile />
           </ProtectedRoute>
         }
       />

@@ -10,7 +10,9 @@ import { UserInterface } from "../../interfaces/UserInterface";
 export const registerUser = asyncHandler(
   async (req: Request, res: Response) => {
     const user = req.body as UserInterface;
-    const hashedPassword = await bcrypt.hash(user.password, 1);
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(user.password, salt);
     user.password = hashedPassword;
     user.role = "student";
     user.owned_courses = [];
