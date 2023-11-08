@@ -1,0 +1,29 @@
+.feedback-container {
+  min-height: calc(100vh - 233px);
+  margin: 0 auto;
+  max-width: 60%;
+  padding-top: 40px;
+}
+
+.feedback-form-container {
+  display: flexbox;
+}
+
+.feedback-button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .feedback-container {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 450px) {
+  .feedback-container {
+    max-width: none;
+    padding: 10px;
+    padding-top: 40px;
+  }
+}

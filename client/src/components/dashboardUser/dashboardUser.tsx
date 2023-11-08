@@ -102,7 +102,7 @@ const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
           icon={faCog}
           label="Settings"
           as={Link}
-          to="/"
+          to="/settings"
           className="dashboard-link"
         />
         <DashboardOption

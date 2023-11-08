@@ -1,0 +1,37 @@
+.settings-container {
+  padding: 20px;
+}
+
+.settings-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.settings-card {
+  margin-bottom: 5px;
+  border: 1px solid #ccc; /* Give a line-like appearance */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: for slight depth */
+}
+
+.settings-card .card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Make the card look clickable */
+.clickable:hover {
+  cursor: pointer;
+  background-color: #f8f9fa; /* Light grey background on hover */
+}
+
+.download-button-container {
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .settings-container {
+    max-width: 60%;
+    margin: 0 auto;
+  }
+}
