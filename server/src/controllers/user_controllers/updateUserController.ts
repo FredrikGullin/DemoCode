@@ -1,25 +1,68 @@
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
+import jwt, { Secret, JwtPayload } from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import { UserModel } from "../../models/userModel";
+import { UpdateUserInterface } from "../../interfaces/UpdateUserInterface";
 
-//@desc updateUser
-//@route PUT /users/update/:id
-//@access Private
+const SECRET_KEY: Secret = process.env.JWT_KEY as Secret;
+
 export const updateUser = asyncHandler(async (req: Request, res: Response) => {
   try {
-    const user = await UserModel.findById(req.params.id);
-    if (!user) {
-      res.status(404);
-      throw new Error("User not found!");
+    const { id } = req.params;
+    const accessToken = req.header("Authorization")?.replace("Bearer ", "");
+    const { username, email, password }: UpdateUserInterface = req.body;
+
+    if (!accessToken) {
+      throw new Error("Missing access token!");
     }
-    user.username = req.body.username;
-    user.email = req.body.email;
-    user.password = req.body.password;
-    user.role = "student";
+
+    const decoded = jwt.verify(accessToken, SECRET_KEY) as JwtPayload;
+
+    if (decoded.userId !== id) {
+      throw new Error("Unauthorized action!");
+    }
+
+    const user = await UserModel.findById(id);
+    if (!user) {
+      res.status(404).json({ message: "User not found!" });
+      return;
+    }
+
+    user.username = username || user.username;
+    user.email = email || user.email;
+    if (password) {
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(password, salt);
+    }
+
     const updatedUser = await user.save();
-    res.status(200).json(updatedUser);
+
+    console.log(updatedUser);
+
+    const updatedToken = jwt.sign(
+      {
+        userId: user._id,
+        username: user.username,
+        email: user.email,
+        role: decoded.role,
+        owned_courses: user?.owned_courses,
+      },
+      SECRET_KEY,
+      { expiresIn: "2h" }
+    );
+
+    res.status(200).json({
+      message: "User updated successfully!",
+      accessToken: updatedToken,
+      userId: user._id,
+      username: user.username,
+      email: user.email,
+      role: user.role,
+      owned_courses: user?.owned_courses,
+    });
   } catch (err) {
-    res.status(500).json("Server error!");
+    res.status(500).json({ message: "Server error!", err });
   }
 });
 

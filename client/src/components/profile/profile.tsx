@@ -56,7 +56,7 @@ const Profile: React.FC<{ id: string }> = () => {
                 : "N/A"}
             </p>
             <div className="text-center">
-              <Link to={"/"}>
+              <Link to={`/profile/edit/${id}`}>
                 <button className="btn btn-primary info-card-button">
                   Edit Profile
                 </button>
