@@ -20,6 +20,7 @@ import Profile from "../components/profile/profile";
 import EditProfile from "../components/editProfile/editProfile";
 import Settings from "../components/settings/settings";
 import FeedbackForm from "../components/feedback/feedback";
+import NewsFeed from "../components/news/news";
 
 const RouterComponent: React.FC = () => {
   const { username } = useAuth();
@@ -37,6 +38,7 @@ const RouterComponent: React.FC = () => {
       <Route path="/courses" element={<Courses></Courses>} />
       <Route path="/courses/:id" element={<Course courseId={""}></Course>} />
       <Route path="/search-results" element={<SearchResult></SearchResult>} />
+      <Route path="/news" element={<NewsFeed></NewsFeed>} />
       <Route path="/feedback" element={<FeedbackForm></FeedbackForm>} />
       <Route
         path="/login"
