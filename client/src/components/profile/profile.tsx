@@ -24,7 +24,6 @@ const Profile: React.FC<{ id: string }> = () => {
         console.log("No userId provided");
         return;
       }
-      console.log(accessToken);
 
       try {
         const userData = await fetchUser(accessToken!, id);

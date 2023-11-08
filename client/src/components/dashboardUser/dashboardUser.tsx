@@ -57,9 +57,10 @@ const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
         await logoutUser(token);
         logout();
         navigate("/");
-        toast.success("You've been logged out!");
+        toast.success("You've been logged out.");
       } catch (error) {
-        toast.error("An error occured while loggin out!");
+        toast.error("An error occured while loggin out.");
+        console.error(error);
       }
     }
   };
