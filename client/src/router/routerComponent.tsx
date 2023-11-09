@@ -22,6 +22,7 @@ import Settings from "../components/settings/settings";
 import FeedbackForm from "../components/feedback/feedback";
 import NewsFeed from "../components/news/news";
 import AdminDashboard from "../components/dashboardAdmin/dashboardAdmin";
+import AdminUserList from "../components/adminUsers/adminUsers";
 
 const RouterComponent: React.FC = () => {
   const { username } = useAuth();
@@ -144,6 +145,14 @@ const RouterComponent: React.FC = () => {
         element={
           <ProtectedRoute>
             <AdminDashboard username={""} />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/users"
+        element={
+          <ProtectedRoute>
+            <AdminUserList />
           </ProtectedRoute>
         }
       />

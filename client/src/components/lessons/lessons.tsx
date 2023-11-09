@@ -15,7 +15,7 @@ const CourseLessons: React.FC<{ courseId: string }> = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      console.error("Access token is undefined!");
+      console.error("Access token is undefined.");
       setError("Authentication details are missing!");
       setLoading(false);
       return;
