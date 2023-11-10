@@ -5,9 +5,6 @@ import { UserModel } from "../../models/userModel";
 
 const SECRET_KEY: Secret = process.env.JWT_KEY as Secret;
 
-//@desc getUser
-//@route GET /users/:id
-//@access Public
 export const getUser = asyncHandler(async (req: Request, res: Response) => {
   try {
     const { id } = req.params;

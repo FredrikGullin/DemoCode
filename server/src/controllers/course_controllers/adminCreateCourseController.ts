@@ -3,10 +3,7 @@ import asyncHandler from "express-async-handler";
 import { CourseModel } from "../../models/courseModel";
 import { CourseInterface } from "../../interfaces/CourseInterface";
 
-//@desc createCourse
-//@route POST /admin/courses/create
-//@access Admin
-export const createCourse = asyncHandler(
+export const adminCreateCourse = asyncHandler(
   async (req: Request, res: Response) => {
     const course = req.body as CourseInterface;
     try {
@@ -18,4 +15,4 @@ export const createCourse = asyncHandler(
   }
 );
 
-export default createCourse;
+export default adminCreateCourse;

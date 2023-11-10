@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
 import jwt, { Secret, JwtPayload } from "jsonwebtoken";
 import dotenv from "dotenv";
-import { redisClient } from "../../../config/redisConnection";
 import { UserModel } from "../../models/userModel";
 
 dotenv.config();

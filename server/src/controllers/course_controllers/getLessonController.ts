@@ -2,9 +2,6 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { CourseModel } from "../../models/courseModel";
 
-//@desc getLesson
-//@route GET /courses/:id/lessons/:index
-//@access Public
 export const getLesson = asyncHandler(async (req: Request, res: Response) => {
   try {
     const courseId = req.params.id;

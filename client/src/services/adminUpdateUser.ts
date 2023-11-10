@@ -2,14 +2,14 @@ import axios from "axios";
 
 const SERVER_URL = import.meta.env.VITE_API_URL;
 
-const editUser = async (
+const adminUpdateUser = async (
   accessToken: string,
   userId: string,
-  setAuthData: (data: any) => void,
   updateData: {
-    username: string;
-    email: string;
+    username?: string;
+    email?: string;
     password?: string;
+    role?: string;
   }
 ) => {
   if (!accessToken) {
@@ -23,16 +23,14 @@ const editUser = async (
       },
     };
     const response = await axios.put(
-      `${SERVER_URL}/users/update/${userId}`,
+      `${SERVER_URL}/admin/users/update/${userId}`,
       updateData,
       config
     );
-    const updatedAuthData = response.data;
-    setAuthData(updatedAuthData);
     return response.data;
   } catch (error) {
-    console.error("Error updating user information. ", error);
+    console.error("Error updating user information!");
   }
 };
 
-export default editUser;
+export default adminUpdateUser;
