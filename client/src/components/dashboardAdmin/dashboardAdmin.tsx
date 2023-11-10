@@ -99,21 +99,21 @@ const AdminDashboard: React.FC<DashboardProps> = () => {
             icon={faNewspaper}
             label="News"
             as={Link}
-            to="/admin/news"
+            to="/admin/dashboard"
             className="admin-dashboard-link"
           />
           <DashboardOption
             icon={faChartBar}
             label="Statistics"
             as={Link}
-            to="/admin/statistics"
+            to="/admin/dashboard"
             className="admin-dashboard-link"
           />
           <DashboardOption
             icon={faCog}
             label="Settings"
             as={Link}
-            to="/admin/settings"
+            to="/admin/dashboard"
             className="admin-dashboard-link"
           />
           <DashboardOption
