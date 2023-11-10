@@ -2,10 +2,7 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { UserModel } from "../../models/userModel";
 
-//@desc getUsers
-//@route GET /admin/users
-//@access Admin
-export const getUsers = asyncHandler(
+export const adminGetUsers = asyncHandler(
   async (req: Request, res: Response, next) => {
     try {
       const users = await UserModel.find();
@@ -20,4 +17,4 @@ export const getUsers = asyncHandler(
   }
 );
 
-export default getUsers;
+export default adminGetUsers;

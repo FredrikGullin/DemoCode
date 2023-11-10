@@ -2,10 +2,7 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { CourseModel } from "../../models/courseModel";
 
-//@desc deleteCourse
-//@route GET /admin/users/delete/:id
-//@access Admin
-export const deleteCourse = asyncHandler(
+export const adminDeleteCourse = asyncHandler(
   async (req: Request, res: Response) => {
     try {
       const deletedCourse = await CourseModel.findByIdAndDelete(req.params.id);
@@ -21,4 +18,4 @@ export const deleteCourse = asyncHandler(
   }
 );
 
-export default deleteCourse;
+export default adminDeleteCourse;

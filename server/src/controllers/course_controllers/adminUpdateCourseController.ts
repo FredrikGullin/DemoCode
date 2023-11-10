@@ -2,10 +2,7 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { CourseModel } from "../../models/courseModel";
 
-//@desc updateCourse
-//@route PUT admin/courses/update/:id
-//@access Admin
-export const updateCourse = asyncHandler(
+export const adminUpdateCourse = asyncHandler(
   async (req: Request, res: Response) => {
     try {
       const course = await CourseModel.findById(req.params.id);
@@ -25,4 +22,4 @@ export const updateCourse = asyncHandler(
   }
 );
 
-export default updateCourse;
+export default adminUpdateCourse;

@@ -4,9 +4,6 @@ import bcrypt from "bcrypt";
 import { UserModel } from "../../models/userModel";
 import { UserInterface } from "../../interfaces/UserInterface";
 
-//@desc registerUser
-//@route POST /users/register
-//@access Public
 export const registerUser = asyncHandler(
   async (req: Request, res: Response) => {
     const user = req.body as UserInterface;

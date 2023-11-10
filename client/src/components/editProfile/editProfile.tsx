@@ -17,12 +17,12 @@ const EditProfile: React.FC = () => {
   const handleUpdateProfile = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!accessToken) {
-      toast.error("Authentication token is missing!");
+      toast.error("Authentication token is missing.");
       return;
     }
 
     if (!id) {
-      toast.error("No user ID provided!");
+      toast.error("No user ID provided.");
       return;
     }
 
@@ -39,12 +39,11 @@ const EditProfile: React.FC = () => {
         setAuthData,
         userData
       );
-      console.log("Response from component: ", updatedUser);
-      toast.success("Profile updated successfully!");
+      toast.success("Profile updated successfully.");
       navigate(`/profile/${id}`);
     } catch (error) {
       console.error("Error updating user: ", error);
-      toast.error("Failed to update profile!");
+      toast.error("Failed to update profile.");
     }
   };
 

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import logoutUser from "../../services/logoutUser";
 import { useAuth } from "../../context/authContext";
@@ -18,7 +18,7 @@ const AppNavbar: React.FC = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem("accessToken");
   const isLoggedIn = Boolean(token);
-  const { logout, userId } = useAuth();
+  const { logout, userId, role } = useAuth();
 
   const handleLogout = async () => {
     if (token) {
@@ -64,7 +64,13 @@ const AppNavbar: React.FC = () => {
       <Container fluid>
         <Navbar.Brand
           as={Link}
-          to={isLoggedIn ? "/dashboard" : "/"}
+          to={
+            isLoggedIn
+              ? role === "admin"
+                ? "/admin/dashboard"
+                : "/dashboard"
+              : "/"
+          }
           onClick={handleNavLinkClick}
         >
           Appeggio
@@ -82,7 +88,7 @@ const AppNavbar: React.FC = () => {
               Courses
             </Nav.Link>
             <NavDropdown
-              title="Student"
+              title={role === "admin" ? "Admin" : "Student"}
               id="navbarScrollingDropdown"
               show={dropdownOpen}
               onToggle={handleDropdownToggle}
@@ -105,7 +111,7 @@ const AppNavbar: React.FC = () => {
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     as={Link}
-                    to="/dashboard"
+                    to={role === "admin" ? "/admin/dashboard" : "/dashboard"}
                     onClick={handleNavLinkClick}
                   >
                     Dashboard

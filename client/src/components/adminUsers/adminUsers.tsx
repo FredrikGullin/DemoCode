@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { toast } from "react-toastify";
 import adminFetchUsers from "../../services/adminFestchUsers";
 import { UserInterface } from "../../interfaces/userInterface";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import adminDeleteUser from "../../services/adminDeleteUser";
+import { Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./adminUsers.css";
 
 const AdminUserList: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
   const [users, setUsers] = useState<UserInterface[] | null>([]);
   const [loading, setLoading] = useState(true);
   const { role, accessToken } = useAuth();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [userToDelete, setUserToDelete] = useState<UserInterface | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,6 +66,51 @@ const AdminUserList: React.FC = () => {
     return <div>Loading...</div>;
   }
 
+  const promptDeleteUser = (user: UserInterface) => {
+    setUserToDelete(user);
+    setShowDeleteModal(true);
+  };
+
+  const handleDeleteUser = async (accessToken: string, userId: string) => {
+    if (!userId) return;
+
+    try {
+      await adminDeleteUser(accessToken, userId);
+      toast.success("User deleted successfully.");
+
+      setUsers(
+        (currentUsers) =>
+          currentUsers?.filter((user) => user._id !== userId) ?? []
+      );
+      setShowDeleteModal(false);
+    } catch (error) {
+      console.error("Failed to delete user.", error);
+      toast.error("Unable to delete user.");
+    }
+  };
+
+  const renderDeleteModal = () => (
+    <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Confirm User Deletion</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {`Are you sure you want to delete the user "${userToDelete?.username}"? This action cannot be undone.`}
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+          Cancel
+        </Button>
+        <Button
+          variant="danger"
+          onClick={() => handleDeleteUser(accessToken!, userToDelete!._id)}
+        >
+          Delete User
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+
   return (
     <>
       <div className="admin-users-list-container">
@@ -83,6 +135,12 @@ const AdminUserList: React.FC = () => {
                             <strong>User-ID:</strong> {user._id}
                           </li>
                           <li>
+                            Member since:{" "}
+                            {user.createdAt
+                              ? new Date(user.createdAt).toLocaleDateString()
+                              : "N/A"}
+                          </li>
+                          <li>
                             <strong>Role:</strong> {user.role}
                           </li>
                           <li>
@@ -93,15 +151,16 @@ const AdminUserList: React.FC = () => {
                           <button
                             type="button"
                             className="admin-buttons btn btn-danger me-2"
+                            onClick={() => promptDeleteUser(user)}
                           >
                             Delete
                           </button>
-                          <button
-                            type="button"
-                            className="admin-buttons btn btn-primary"
+                          <Link
+                            to={`/admin/users/${user._id}`}
+                            className="admin-buttons"
                           >
-                            Edit
-                          </button>
+                            <Button variant="primary">View</Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -112,6 +171,7 @@ const AdminUserList: React.FC = () => {
           ))}
         </div>
       </div>
+      {renderDeleteModal()}
     </>
   );
 };

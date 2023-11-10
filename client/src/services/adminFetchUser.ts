@@ -1,0 +1,18 @@
+import axios from "axios";
+
+const SERVER_URL = import.meta.env.VITE_API_URL;
+
+const adminFetchUser = async (accessToken: string, userId: string) => {
+  try {
+    const response = await axios.get(`${SERVER_URL}/admin/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user!");
+  }
+};
+
+export default adminFetchUser;

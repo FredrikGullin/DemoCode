@@ -2,9 +2,6 @@ import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import { CourseModel } from "../../models/courseModel";
 
-//@desc getCourse
-//@route GET /courses/:id
-//@access Public
 export const getCourse = asyncHandler(async (req: Request, res: Response) => {
   try {
     const course = await CourseModel.findById(req.params.id);

@@ -15,18 +15,29 @@ export const paywall = asyncHandler(
       const token = req.header("Authorization")?.replace("Bearer ", "");
 
       if (!token) {
-        throw new Error("Missing access token!");
+        res.status(401).json({ message: "Missing access token!" });
+        return;
       }
 
       const isRevoked = await redisClient.sIsMember("revokedList", token);
+      if (isRevoked) {
+        res.status(401).json({ message: "Token is revoked!" });
+        return;
+      }
 
       if (!isRevoked) {
         const decoded = jwt.verify(token, SECRET_KEY) as JwtPayload;
+
+        if (decoded.role === "admin") {
+          next();
+          return;
+        }
 
         const user = await UserModel.findById(decoded.userId);
 
         if (!user) {
           res.status(404).json({ message: "User not found!" });
+          return;
         }
 
         const ownedCourses = decoded.owned_courses || [];
