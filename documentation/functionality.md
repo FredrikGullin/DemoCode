@@ -3,6 +3,7 @@
 ## Applikation
 
     Appeggio
+    _Deployment länk: https://appeggio.netlify.app/_
 
 ## Teknisk information
 
