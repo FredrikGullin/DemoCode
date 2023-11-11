@@ -14,8 +14,9 @@ const Courses: React.FC = () => {
       try {
         const data = await fetchCourses();
         setCourses(data);
-      } catch (err) {
-        setError("Faild to fetch courses!");
+      } catch (error) {
+        setError("Faild to fetch courses.");
+        console.error("Component error: ", error);
       } finally {
         setLoading(false);
       }

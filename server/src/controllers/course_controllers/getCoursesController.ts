@@ -7,12 +7,12 @@ export const getCourses = asyncHandler(
     try {
       const courses = await CourseModel.find();
       if (courses.length === 0) {
-        res.send("Course-database is empty!");
+        res.send("Controller: Course-database is empty!");
       }
       res.json(courses);
-    } catch (err) {
+    } catch (error) {
       res.status(400);
-      throw new Error(`${err}`);
+      throw new Error(`Controller: Error fetching courses! - ${error}`);
     }
   }
 );

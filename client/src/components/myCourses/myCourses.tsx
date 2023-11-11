@@ -17,8 +17,8 @@ const MyCourses: React.FC = () => {
   useEffect(() => {
     const loadCoureses = async () => {
       if (!accessToken || !userId) {
-        console.error("Access token or user ID is undefined!");
-        setError("Authentication details are missing!");
+        console.error("Access token or user ID is undefined.");
+        setError("Authentication details are missing.");
         setLoading(false);
         return;
       }
@@ -28,14 +28,14 @@ const MyCourses: React.FC = () => {
         setCourses(data);
       } catch (err) {
         if (courses.length === 0) {
-          toast.info("You don't own any courses yet!");
+          toast.info("You don't own any courses yet.");
           return (
             <>
               <div style={{ minHeight: "calc(100vh - 233px)" }}></div>
             </>
           );
         } else {
-          setError("Failed fetching courses!");
+          setError("Failed fetching courses.");
         }
       } finally {
         setLoading(false);
@@ -45,7 +45,7 @@ const MyCourses: React.FC = () => {
   }, [accessToken, userId]);
 
   if (!courses) {
-    return <div>You don't own any courses yet!</div>;
+    return <div>You don't own any courses yet.</div>;
   }
 
   if (loading) {

@@ -9,7 +9,7 @@ const searchService = async (query: string) => {
     });
     return result.data;
   } catch (error) {
-    console.error("Search failed: ", error);
+    console.error("Service: Search error - ", error);
   }
 };
 

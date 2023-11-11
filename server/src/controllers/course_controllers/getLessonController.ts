@@ -15,7 +15,7 @@ export const getLesson = asyncHandler(async (req: Request, res: Response) => {
     const course = await CourseModel.findById(req.params.id);
     if (!course) {
       res.status(404);
-      throw new Error("Course not found!");
+      throw new Error("Controller: Course not found!");
     }
 
     const lesson = course.lessons.find(
@@ -23,13 +23,13 @@ export const getLesson = asyncHandler(async (req: Request, res: Response) => {
     );
 
     if (!lesson) {
-      res.status(404).json({ message: "Lesson not found!" });
+      res.status(404).json({ message: "Controller: Lesson not found!" });
     }
 
     res.json(lesson);
-  } catch (err) {
+  } catch (error) {
     res.status(401);
-    throw new Error("Error fetching course!");
+    throw new Error(`Controller: Error fetching lesson! - ${error}`);
   }
 });
 

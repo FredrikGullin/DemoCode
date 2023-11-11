@@ -8,9 +8,10 @@ export const adminCreateCourse = asyncHandler(
     const course = req.body as CourseInterface;
     try {
       CourseModel.insertMany([course]);
-      res.send("Course " + course.course_name + " was registered!");
-    } catch (err) {
-      throw new Error(`Failed to create course: ${err}`);
+      res.status(200);
+      res.send("Controller: Course " + course.course_name + " was registered!");
+    } catch (error) {
+      throw new Error(`Controller: Failed to create course! - ${error}`);
     }
   }
 );

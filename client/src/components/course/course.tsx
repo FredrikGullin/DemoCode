@@ -7,21 +7,23 @@ import { Button } from "react-bootstrap";
 import "./course.css";
 
 const Course: React.FC<{ courseId: string }> = () => {
-  const { owned_courses } = useAuth();
+  const { owned_courses, role } = useAuth();
   const { id } = useParams<{ id: string }>();
   const [course, setCourse] = useState<CourseInterface | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const isLoggedIn = Boolean(sessionStorage.getItem("accessToken"));
   const isOwned = owned_courses?.includes(id!);
+  const haveAccess = isOwned || role === "admin";
 
   useEffect(() => {
     const getCourse = async () => {
       try {
         const courseData = await fetchCourse(id!);
         setCourse(courseData);
-      } catch (err) {
-        setError("Failed to fetch course!");
+      } catch (error) {
+        setError("Failed to fetch course.");
+        console.error("Component error: ", error);
       } finally {
         setLoading(false);
       }
@@ -87,7 +89,7 @@ const Course: React.FC<{ courseId: string }> = () => {
                   </p>
                 )}
               </div>
-              {isOwned && (
+              {haveAccess && (
                 <div className="lessons-link">
                   <Link to={`/my-courses/${course!._id}/lessons`}>
                     <Button>Go to lessons</Button>

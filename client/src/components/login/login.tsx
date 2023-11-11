@@ -46,9 +46,9 @@ const Login: React.FC = () => {
     } catch (error) {
       if (error instanceof Error) {
         toast.error("Login failed.");
-        console.error(error);
+        console.error("Component error: ", error);
       } else {
-        toast.error("An error occurred. Please try again!");
+        toast.error("An error has occurred. Please try again.");
       }
     }
   };

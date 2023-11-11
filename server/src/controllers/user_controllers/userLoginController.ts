@@ -6,14 +6,13 @@ import { UserModel } from "../../models/userModel";
 
 const SECRET_KEY: Secret = process.env.JWT_KEY as Secret;
 
-//@desc userLogin
-//@route POST /users/login
-//@access Pubilc
 export const userLogin = asyncHandler(async (req: Request, res: Response) => {
   try {
     const user = await UserModel.findOne({ email: req.body.email });
     if (user == null) {
-      res.status(401).json({ message: "Invalid email or password" });
+      res
+        .status(401)
+        .json({ message: "Controller: Invalid email or password" });
     } else {
       const valid = await bcrypt.compare(req.body.password, user.password);
       if (valid) {
@@ -36,12 +35,14 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
           owned_courses: user.owned_courses,
         });
       } else {
-        res.status(401).json({ message: "Invalid email or password" });
+        res
+          .status(401)
+          .json({ message: "Controller: Invalid email or password" });
       }
     }
-  } catch (err) {
+  } catch (error) {
     res.status(400);
-    throw new Error(`${err}`);
+    throw new Error(`Controller: Error logging in! - ${error}`);
   }
 });
 

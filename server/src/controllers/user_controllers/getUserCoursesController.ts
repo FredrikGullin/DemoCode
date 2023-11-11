@@ -15,7 +15,7 @@ export const getOwnedCourses = asyncHandler(
       const token = req.header("Authorization")?.replace("Bearer ", "");
 
       if (!token) {
-        throw new Error("Missing access token!");
+        throw new Error("Controller: Missing access token!");
       }
 
       const decoded = jwt.verify(token, SECRET_KEY) as JwtPayload;
@@ -33,15 +33,20 @@ export const getOwnedCourses = asyncHandler(
         }
 
         if (courses.length === 0) {
-          res.status(404).json({ message: "You don't own any courses yet!" });
+          res
+            .status(404)
+            .json({ message: "Controller: You don't own any courses yet!" });
         }
 
         res.status(200).json({ courses });
       } else {
-        res.status(404).json({ message: "You don't own any courses yet!" });
+        res
+          .status(404)
+          .json({ message: "Controller: You don't own any courses yet!" });
       }
-    } catch (err) {
-      res.status(500).json({ error: "Server error!" });
+    } catch (error) {
+      res.status(500);
+      throw new Error(`Controller: Error fetching courses! - ${error}`);
     }
   }
 );

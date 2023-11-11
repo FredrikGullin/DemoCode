@@ -12,25 +12,25 @@ export const getUser = asyncHandler(async (req: Request, res: Response) => {
 
     if (!accessToken) {
       res.status(401);
-      throw new Error("No access token provided!");
+      throw new Error("Controller: No access token provided!");
     }
 
     const decoded = jwt.verify(accessToken, SECRET_KEY) as JwtPayload;
 
     if (decoded.userId !== id) {
-      throw new Error("Unauthorized action!");
+      throw new Error("Controller: Unauthorized action!");
     }
 
     const user = await UserModel.findById(req.params.id);
     if (!user) {
       res.status(404);
-      throw new Error("User not found!");
+      throw new Error("Controller: User not found!");
     }
 
     res.status(200).json(user);
-  } catch (err) {
+  } catch (error) {
     res.status(401);
-    throw new Error("Server error fetching user!");
+    throw new Error(`Controller: Error fetching user! - ${error}`);
   }
 });
 

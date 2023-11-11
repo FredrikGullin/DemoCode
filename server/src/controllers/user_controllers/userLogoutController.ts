@@ -7,8 +7,8 @@ export const storeRevokedToken = async (token: string) => {
   try {
     await redisClient.SADD("revokedList", token);
     console.log("Token added to revoked-list!");
-  } catch (err) {
-    throw new Error("Failed connecting to REDIS!");
+  } catch (error) {
+    throw new Error(`Controller: Error connecting to REDIS! - ${error}`);
   }
 };
 
@@ -20,10 +20,10 @@ export const userLogout = async (req: Request, res: Response) => {
       await storeRevokedToken(token);
       res.send("Token added to revoked-list!");
     } else {
-      res.status(400).json({ message: "Token not provided!" });
+      res.status(400).json({ message: "Controller: Token not provided!" });
     }
-  } catch (err) {
-    throw new Error("Failed to revoke token!");
+  } catch (error) {
+    throw new Error(`Controller: Error logging out! - ${error}`);
   }
 };
 

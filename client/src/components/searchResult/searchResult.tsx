@@ -12,9 +12,13 @@ function SearchResult() {
 
   useEffect(() => {
     const fetchResult = async () => {
-      if (searchQuery) {
-        const data = await searchService(searchQuery);
-        setResult(data);
+      try {
+        if (searchQuery) {
+          const data = await searchService(searchQuery);
+          setResult(data);
+        }
+      } catch (error) {
+        console.error("Component error: ", error);
       }
     };
     fetchResult();

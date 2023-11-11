@@ -33,7 +33,6 @@ label {
   float: right;
 }
 
-/* For larger screens */
 @media (max-width: 769px) {
   .login-container {
     min-width: none;

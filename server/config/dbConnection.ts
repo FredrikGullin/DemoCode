@@ -8,9 +8,9 @@ const DATABASE_URL = process.env.DATABASE_URL;
 const connectDb = async () => {
   try {
     await mongoose.connect(DATABASE_URL!);
-    console.log("Connected to mongo-database: ChillazzLand");
-  } catch (err) {
-    throw new Error(`Error: ${err}`);
+    console.log("connectDb: Connected to mongo-database: ChillazzLand");
+  } catch (error) {
+    throw new Error(`connectDb: Error! - ${error}`);
   }
 };
 

@@ -14,7 +14,7 @@ const deleteAccount = async (accessToken: string, userId: string) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error deleting user: ", error);
+    console.error("Service: Error deleting user - ", error);
   }
 };
 

@@ -7,7 +7,7 @@ export const searchCourse = asyncHandler(
     const { search } = req.body;
 
     if (!search) {
-      res.status(400).json({ message: "Please provide a search query!" });
+      res.status(400).json({ message: "Controller: Missing search query!" });
     }
 
     try {
@@ -20,12 +20,13 @@ export const searchCourse = asyncHandler(
       });
 
       if (results.length === 0) {
-        res.status(404).json({ message: "No matches found!" });
+        res.status(404).json({ message: "Controller: No matches found!" });
       } else {
         res.json(results);
       }
-    } catch (err) {
-      res.status(500).json({ error: "Search query failed!" });
+    } catch (error) {
+      res.status(500);
+      throw new Error(`Controller: Search error! - ${error}`);
     }
   }
 );

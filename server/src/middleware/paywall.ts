@@ -15,13 +15,13 @@ export const paywall = asyncHandler(
       const token = req.header("Authorization")?.replace("Bearer ", "");
 
       if (!token) {
-        res.status(401).json({ message: "Missing access token!" });
+        res.status(401).json({ message: "paywall: Missing access token!" });
         return;
       }
 
       const isRevoked = await redisClient.sIsMember("revokedList", token);
       if (isRevoked) {
-        res.status(401).json({ message: "Token is revoked!" });
+        res.status(401).json({ message: "paywall: Token is revoked!" });
         return;
       }
 
@@ -36,7 +36,7 @@ export const paywall = asyncHandler(
         const user = await UserModel.findById(decoded.userId);
 
         if (!user) {
-          res.status(404).json({ message: "User not found!" });
+          res.status(404).json({ message: "paywall: User not found!" });
           return;
         }
 
@@ -55,17 +55,17 @@ export const paywall = asyncHandler(
         if (isOwned) {
           next();
         } else {
-          res
-            .status(403)
-            .json({ message: "Access denied. You do not own this course!" });
+          res.status(403).json({
+            message: "paywall: Access denied. You do not own this course!",
+          });
         }
       } else {
         res.status(401);
-        throw new Error("Token is revoked!");
+        throw new Error("paywall: Token is revoked!");
       }
-    } catch (err) {
+    } catch (error) {
       res.status(401);
-      throw new Error("User must be authenticated!");
+      throw new Error(`paywall: User must be authenticated! - ${error}`);
     }
   }
 );

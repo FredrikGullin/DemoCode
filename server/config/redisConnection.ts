@@ -14,37 +14,43 @@ export const redisClient = createClient({
 export const connectRedis = async () => {
   try {
     await redisClient.connect();
-    console.log("Connected to redis-database: Chillazz-Redis-free-db");
-  } catch (err) {
-    throw new Error("Failed connecting to REDIS!");
+    console.log(
+      "connectRedis: Connected to redis-database: Chillazz-Redis-free-db"
+    );
+  } catch (error) {
+    throw new Error(`connectRedis: Error connecting to REDIS! - ${error}`);
   }
 };
 
 export const storeRevokedToken = async (token: string) => {
   try {
     await redisClient.SADD("revokedList", token);
-    console.log("Token added to revoked-list!");
-  } catch (err) {
-    throw new Error("Failed connecting to REDIS!");
+    console.log("Revoked: Token added to revoked-list!");
+  } catch (error) {
+    throw new Error(`Revoked: Revoked store error! - ${error}`);
   }
 };
 
 export const cleanRevokedList = async () => {
   const revokedList = await redisClient.sMembers("revokedList");
+  try {
+    if (revokedList.length > 0) {
+      const cleaned = await redisClient.del("revokedList");
 
-  if (revokedList.length > 0) {
-    const cleaned = await redisClient.del("revokedList");
-
-    if (!cleaned) {
-      throw new Error("Failed cleaning revoked-list!");
+      if (!cleaned) {
+        throw new Error("Revoked: Error cleaning revoked-list!");
+      } else {
+        console.log("Revoked: Revoked-list cleaned!");
+      }
     } else {
-      console.log("Revoked-list cleaned!");
+      console.log("Revoked: Revoke-list is empty!");
     }
-  } else {
-    console.log("Revoke-list is empty!");
+  } catch (error) {
+    throw new Error(`Revoked: Error cleaning revoked list! - ${error}`);
   }
 };
 
+/* Schemalagd tömning av revoked list */
 export const scheduleClean = () => {
   const now = new Date();
   const nextMidnight = new Date(now);
@@ -73,8 +79,12 @@ export const scheduleClean = () => {
 };
 
 export const getRevokedList = async () => {
-  const revokedList = await redisClient.sMembers("revokedList");
-  console.log(revokedList);
+  try {
+    const revokedList = await redisClient.sMembers("revokedList");
+    console.log("Revoked: ", revokedList);
+  } catch (error) {
+    throw new Error(`Revoked: Error fetching revoked list! - ${error}`);
+  }
 };
 
 export default connectRedis;

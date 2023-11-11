@@ -42,8 +42,8 @@ const EditProfile: React.FC = () => {
       toast.success("Profile updated successfully.");
       navigate(`/profile/${id}`);
     } catch (error) {
-      console.error("Error updating user: ", error);
       toast.error("Failed to update profile.");
+      console.error("Component error: ", error);
     }
   };
 

@@ -11,7 +11,7 @@ const adminFetchUser = async (accessToken: string, userId: string) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Error fetching user!");
+    console.error("Service: Error fetching user - ", error);
   }
 };
 

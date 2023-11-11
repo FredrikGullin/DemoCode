@@ -1,26 +1,36 @@
 import React, { FormEvent, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button, Form } from "react-bootstrap";
 import { useAuth } from "../../context/authContext";
 import adminFetchUser from "../../services/adminFetchUser";
 import adminUpdateUser from "../../services/adminUpdateUser";
 import { UserInterface } from "../../interfaces/userInterface";
+import "./adminEditUser.css";
 
 const AdminEditUser: React.FC = () => {
-  const { accessToken } = useAuth();
+  const { accessToken, role } = useAuth();
   const { id } = useParams<{ id: string }>();
   const [user, setUser] = useState<UserInterface | null>(null);
   const [updateUsername, setUpdateUsername] = useState("");
   const [updateEmail, setUpdateEmail] = useState("");
   const [updatePassword, setUpdatePassword] = useState("");
   const [updateRole, setUpdateRole] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!accessToken || !id) {
       toast.error("Access token or user ID is missing.");
       return;
     }
+
+    if (role !== "admin") {
+      toast.error("Unauthorized action!");
+      console.error("Unauthorized action!");
+      navigate("/");
+      return;
+    }
+
     const getUserInfo = async () => {
       try {
         const fetchedUser = await adminFetchUser(accessToken, id);
@@ -30,6 +40,7 @@ const AdminEditUser: React.FC = () => {
         setUpdateRole(fetchedUser.role);
       } catch (error) {
         toast.error("Failed fetching user information.");
+        console.error("Component error: ", error);
       }
     };
     getUserInfo();
@@ -50,6 +61,7 @@ const AdminEditUser: React.FC = () => {
       toast.success("User updated successfully.");
     } catch (error) {
       toast.error("Failed to update user.");
+      console.error("Component error: ", error);
     }
   };
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import adminFetchUser from "../../services/adminFetchUser";
 import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { UserInterface } from "../../interfaces/userInterface";
 import { useAuth } from "../../context/authContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,9 +11,10 @@ import "./adminViewUser.css";
 
 const AdminViewUser: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { accessToken } = useAuth();
+  const { accessToken, role } = useAuth();
   const [user, setUser] = useState<UserInterface | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -21,12 +23,19 @@ const AdminViewUser: React.FC = () => {
         return;
       }
 
+      if (role !== "admin") {
+        toast.error("Unauthorized action!");
+        console.error("Unauthorized action!");
+        navigate("/");
+        return;
+      }
+
       try {
         const userData = await adminFetchUser(accessToken, id);
         setUser(userData);
       } catch (error) {
         setError("Error getting user data.");
-        console.error("Error getting user data:", error);
+        console.error("Component error:", error);
       }
     };
 

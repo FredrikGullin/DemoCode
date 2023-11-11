@@ -15,7 +15,7 @@ const logoutUser = async (token: string) => {
     );
     window.location.reload();
   } catch (error) {
-    throw new Error("There was an error logging out!");
+    console.error("Service: Error logging out user - ", error);
   }
 };
 

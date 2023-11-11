@@ -53,9 +53,7 @@ const Settings: React.FC = () => {
               </div>
             </Card.Body>
           </Card>
-          {/* <div className="download-button-container">
-            <Button variant="primary">Download</Button>
-          </div> */}
+
           <Card className="settings-card clickable">
             <Card.Body>Version: 1.0.0</Card.Body>
           </Card>

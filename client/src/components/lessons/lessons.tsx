@@ -16,7 +16,7 @@ const CourseLessons: React.FC<{ courseId: string }> = () => {
   useEffect(() => {
     if (!accessToken) {
       console.error("Access token is undefined.");
-      setError("Authentication details are missing!");
+      setError("Authentication details are missing.");
       setLoading(false);
       return;
     }
@@ -32,6 +32,7 @@ const CourseLessons: React.FC<{ courseId: string }> = () => {
       } catch (error) {
         if (isMounted) {
           setError("Failed fetching lessons!");
+          console.error("Component error: ", error);
         }
       } finally {
         if (isMounted) {
@@ -59,7 +60,7 @@ const CourseLessons: React.FC<{ courseId: string }> = () => {
   }
 
   if (!lessons) {
-    return <div>There are no lessons for this course!</div>;
+    return <div>There are no lessons for this course.</div>;
   }
 
   return (

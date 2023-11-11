@@ -8,12 +8,15 @@ export const adminDeleteCourse = asyncHandler(
       const deletedCourse = await CourseModel.findByIdAndDelete(req.params.id);
       if (!deletedCourse) {
         res.status(404);
-        throw new Error("Course not found!");
+        throw new Error("Controller: Course not found!");
       }
-      res.status(200).send("Course successfully deleted!").json(deletedCourse);
-    } catch (err) {
+      res
+        .status(200)
+        .send("Controller: Course successfully deleted!")
+        .json(deletedCourse);
+    } catch (error) {
       res.status(500);
-      throw new Error("Server error!");
+      throw new Error(`Controller: Error deleteing course! ${error}`);
     }
   }
 );

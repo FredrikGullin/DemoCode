@@ -11,15 +11,7 @@ const registerUser = async (userData: {
     const response = await axios.post(`${SERVER_URL}/users/register`, userData);
     return response.data;
   } catch (error) {
-    if (axios.isAxiosError(error)) {
-      if (error.response) {
-        throw new Error(error.response.data);
-      } else if (error.request) {
-        throw new Error("Server did not respond...");
-      } else {
-        throw new Error(error.message);
-      }
-    }
+    console.error("Service: Error registering user - ", error);
   }
 };
 

@@ -1,3 +1,5 @@
+/* Första route för att testa */
+
 import { Router, Request, Response } from "express";
 
 export const home = Router();

@@ -17,12 +17,12 @@ export const registerUser = asyncHandler(
       const existingUser = await UserModel.findOne({ email: user.email });
       if (existingUser) {
         res.status(400);
-        throw new Error("Email already exists!");
+        throw new Error("Controller: Email already exists!");
       }
       UserModel.insertMany([user]);
       res.send("User " + user.username + " was registered!");
-    } catch (err) {
-      throw new Error(`Failed to register user: ${err}`);
+    } catch (error) {
+      throw new Error(`Controller: Error registering user: ${error}`);
     }
   }
 );

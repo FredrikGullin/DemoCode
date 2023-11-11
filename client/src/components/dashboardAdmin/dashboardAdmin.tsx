@@ -47,9 +47,7 @@ const DashboardOption: React.FC<DashboardOptionProps> = ({
 const AdminDashboard: React.FC<DashboardProps> = () => {
   const accessToken = sessionStorage.getItem("accessToken");
   const { role } = useAuth();
-
   const { logout } = useAuth();
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -66,10 +64,10 @@ const AdminDashboard: React.FC<DashboardProps> = () => {
         await logoutUser(accessToken);
         logout();
         navigate("/");
-        toast.success("You've been logged out!");
+        toast.success("You've been logged out.");
       } catch (error) {
-        toast.error("An error occured while loggin out!");
-        console.error(error);
+        toast.error("An error occured while loggin out.");
+        console.error("Component error: ", error);
       }
     }
   };

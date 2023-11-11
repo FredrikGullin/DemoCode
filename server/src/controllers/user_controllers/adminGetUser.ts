@@ -9,19 +9,19 @@ export const adminGetUser = asyncHandler(
 
       if (!accessToken) {
         res.status(401);
-        throw new Error("No access token provided!");
+        throw new Error("Controller: No access token provided!");
       }
 
       const user = await UserModel.findById(req.params.id);
       if (!user) {
         res.status(404);
-        throw new Error("User not found!");
+        throw new Error("Controller: User not found!");
       }
 
       res.status(200).json(user);
-    } catch (err) {
+    } catch (error) {
       res.status(401);
-      throw new Error("Server error fetching user!");
+      throw new Error(`Controller: Error fetching users! - ${error}`);
     }
   }
 );

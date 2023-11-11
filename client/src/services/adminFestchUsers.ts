@@ -9,10 +9,9 @@ const adminFetchUsers = async (accessToken: string) => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    console.log("service: ", response.data);
     return response.data;
   } catch (error) {
-    console.error("Failed fetching users.", error);
+    console.error("Service: Error fetching users - ", error);
   }
 };
 

@@ -11,7 +11,7 @@ const fetchOwnedCourses = async (token: string, userId: string) => {
     });
     return response.data.courses;
   } catch (error) {
-    console.error("Error fetching courses!", error);
+    console.error("Service: Error fetching courses - ", error);
     throw error;
   }
 };

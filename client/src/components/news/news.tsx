@@ -28,26 +28,31 @@ Appeggio is about igniting passions. So, we invite you to join us—grab your in
 
 const NewsFeed: React.FC = () => {
   return (
-    <Container>
-      <Row>
-        <Col>
-          <h2 className="text-center my-4">News Feed</h2>
-        </Col>
-      </Row>
-      <Row className="mb-3">
-        <Col>
-          <div className="p-3 border rounded bg-white">
-            <h3>{initialPost.title}</h3>
-            <div className="news-post-text" style={{ whiteSpace: "pre-wrap" }}>
-              {initialPost.content}
+    <div className="news-container">
+      <Container>
+        <Row>
+          <Col>
+            <h2 className="text-center my-4">News Feed</h2>
+          </Col>
+        </Row>
+        <Row className="mb-3">
+          <Col>
+            <div className="p-3 border rounded bg-white">
+              <h3>{initialPost.title}</h3>
+              <div
+                className="news-post-text"
+                style={{ whiteSpace: "pre-wrap" }}
+              >
+                {initialPost.content}
+              </div>
+              <p className="text-muted">
+                Posted by {initialPost.author} on {initialPost.createdAt}
+              </p>
             </div>
-            <p className="text-muted">
-              Posted by {initialPost.author} on {initialPost.createdAt}
-            </p>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

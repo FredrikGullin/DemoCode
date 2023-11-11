@@ -16,10 +16,9 @@ const fetchLesson = async (
         },
       }
     );
-    console.log("Data from backend: ", response.data);
     return response.data;
   } catch (error) {
-    console.error("Error fetching lesson!");
+    console.error("Service: Error fetching lesson - ", error);
   }
 };
 

@@ -14,18 +14,18 @@ export const updateUser = asyncHandler(async (req: Request, res: Response) => {
     const { username, email, password }: UpdateUserInterface = req.body;
 
     if (!accessToken) {
-      throw new Error("Missing access token!");
+      throw new Error("Controller: Missing access token!");
     }
 
     const decoded = jwt.verify(accessToken, SECRET_KEY) as JwtPayload;
 
     if (decoded.userId !== id) {
-      throw new Error("Unauthorized action!");
+      throw new Error("Controller: Unauthorized action!");
     }
 
     const user = await UserModel.findById(id);
     if (!user) {
-      res.status(404).json({ message: "User not found!" });
+      res.status(404).json({ message: "Controller: User not found!" });
       return;
     }
 
@@ -61,8 +61,9 @@ export const updateUser = asyncHandler(async (req: Request, res: Response) => {
       role: user.role,
       owned_courses: user?.owned_courses,
     });
-  } catch (err) {
-    res.status(500).json({ message: "Server error!", err });
+  } catch (error) {
+    res.status(500);
+    throw new Error(`Controller: Error updating user! - ${error}`);
   }
 });
 

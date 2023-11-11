@@ -60,7 +60,7 @@ const DashboardUser: React.FC<DashboardProps> = ({ username }) => {
         toast.success("You've been logged out.");
       } catch (error) {
         toast.error("An error occured while loggin out.");
-        console.error(error);
+        console.error("Component error: ", error);
       }
     }
   };

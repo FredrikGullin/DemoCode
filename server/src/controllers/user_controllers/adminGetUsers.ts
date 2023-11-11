@@ -7,12 +7,12 @@ export const adminGetUsers = asyncHandler(
     try {
       const users = await UserModel.find();
       if (users.length === 0) {
-        res.send("User database is empty!");
+        res.send("Controller: User database is empty!");
       }
       res.json(users);
-    } catch (err) {
+    } catch (error) {
       res.status(400);
-      throw new Error(`${err}`);
+      throw new Error(`Controller: Error fetching users! - ${error}`);
     }
   }
 );

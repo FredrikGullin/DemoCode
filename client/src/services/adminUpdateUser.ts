@@ -12,10 +12,6 @@ const adminUpdateUser = async (
     role?: string;
   }
 ) => {
-  if (!accessToken) {
-    throw new Error("No access token available!");
-  }
-
   try {
     const config = {
       headers: {
@@ -29,7 +25,7 @@ const adminUpdateUser = async (
     );
     return response.data;
   } catch (error) {
-    console.error("Error updating user information!");
+    console.error("Service: Error updating user information - ", error);
   }
 };
 

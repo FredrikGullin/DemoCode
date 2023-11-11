@@ -15,7 +15,7 @@ export const auth = asyncHandler(
       const token = req.header("Authorization")?.replace("Bearer ", "");
 
       if (!token) {
-        throw new Error("Missing access token!");
+        throw new Error("auth: Missing access token!");
       }
 
       const isRevoked = await redisClient.sIsMember("revokedList", token);
@@ -27,11 +27,11 @@ export const auth = asyncHandler(
         next();
       } else {
         res.status(401);
-        throw new Error("Token is revoked!");
+        throw new Error("auth: Token is revoked!");
       }
-    } catch (err) {
+    } catch (error) {
       res.status(401);
-      throw new Error("User must be authenticated!");
+      throw new Error(`auth: User must be authenticated! - ${error}`);
     }
   }
 );

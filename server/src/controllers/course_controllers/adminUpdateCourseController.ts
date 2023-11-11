@@ -8,7 +8,7 @@ export const adminUpdateCourse = asyncHandler(
       const course = await CourseModel.findById(req.params.id);
       if (!course) {
         res.status(404);
-        throw new Error("Course not found!");
+        throw new Error("Controller: Course not found!");
       }
       course.course_name = req.body.course_name;
       course.course_info = req.body.course_info;
@@ -16,8 +16,8 @@ export const adminUpdateCourse = asyncHandler(
 
       const updatedCourse = await course.save();
       res.status(200).json(updatedCourse);
-    } catch (err) {
-      res.status(500).json("Server error!");
+    } catch (error) {
+      throw new Error(`Controller: Error updating course! - ${error}`);
     }
   }
 );

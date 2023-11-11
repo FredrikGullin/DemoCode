@@ -14,7 +14,7 @@ const fetchLessons = async (accessToken: string, courseId: string) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching lessons.", error);
+    console.error("Service: Error fetching lessons - ", error);
   }
 };
 

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import logoutUser from "../../services/logoutUser";
 import { useAuth } from "../../context/authContext";
@@ -26,9 +26,9 @@ const AppNavbar: React.FC = () => {
         await logoutUser(token);
         logout();
         navigate("/");
-        toast.success("You've been logged out!");
+        toast.success("You've been logged out.");
       } catch (error) {
-        toast.error("An error occured while loggin out!");
+        toast.error("An error occured while loggin out.");
       }
     }
   };
@@ -47,7 +47,7 @@ const AppNavbar: React.FC = () => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchQuery) {
-      toast.error("Please provide a search query!");
+      toast.info("Please provide a search query.");
     } else {
       navigate("/search-results", { state: { searchQuery } });
       setSearchQuery("");

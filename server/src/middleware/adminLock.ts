@@ -14,7 +14,7 @@ export const adminLock = asyncHandler(
       const token = req.header("Authorization")?.replace("Bearer ", "");
 
       if (!token) {
-        throw new Error("Missing access token!");
+        throw new Error("adminLock: Missing access token!");
       }
 
       const isRevoked = await redisClient.sIsMember("revokedList", token);
@@ -27,15 +27,15 @@ export const adminLock = asyncHandler(
         } else {
           res
             .status(403)
-            .json({ message: "Access denied! User is not admin!" });
+            .json({ message: "adminLock: Access denied! User is not admin!" });
         }
       } else {
         res.status(401);
-        throw new Error("Token is revoked!");
+        throw new Error("adminLock: Token is revoked!");
       }
-    } catch (err) {
+    } catch (error) {
       res.status(401);
-      throw new Error("User must be authenticated!");
+      throw new Error(`adminLock: User must be authenticated! - ${error}`);
     }
   }
 );

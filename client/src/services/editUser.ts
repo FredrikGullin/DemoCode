@@ -12,10 +12,6 @@ const editUser = async (
     password?: string;
   }
 ) => {
-  if (!accessToken) {
-    throw new Error("No access token available!");
-  }
-
   try {
     const config = {
       headers: {
@@ -31,7 +27,7 @@ const editUser = async (
     setAuthData(updatedAuthData);
     return response.data;
   } catch (error) {
-    console.error("Error updating user information. ", error);
+    console.error("Service: Error updating user information - ", error);
   }
 };
 

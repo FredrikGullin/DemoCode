@@ -45,5 +45,5 @@
 }
 
 Button {
-  margin-right: 0.5rem !important; /* This should be the same value Bootstrap uses for 'me-2' */
+  margin-right: 0.5rem !important;
 }

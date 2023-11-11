@@ -6,7 +6,6 @@ import {
   faTwitter,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
-
 import "./footer.css";
 
 const Footer: React.FC = () => {

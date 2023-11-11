@@ -28,7 +28,7 @@ const CheckoutPurchase: React.FC = () => {
         const courseData = await fetchCourse(id!);
         setCourse(courseData);
       } catch (err) {
-        setError("Failed to fetch course!");
+        setError("Failed to fetch course.");
       } finally {
         setLoading(false);
       }
@@ -47,20 +47,22 @@ const CheckoutPurchase: React.FC = () => {
   const handlePurchase = async () => {
     try {
       if (!accessToken) {
-        throw new Error("Authentication token is missing!");
+        toast.error("Authentication token is missing.");
+        console.error("Component error: ", error);
+        return;
       }
 
       if (!id) {
-        throw new Error("Course ID is missing!");
+        toast.error("Course ID is missing.");
+        console.error("Component error: ", error);
+        return;
       }
 
       const responseData = await handlePurchaseCourse(
-        id,
-        accessToken,
+        id!,
+        accessToken!,
         setAuthData
       );
-      console.log("Response data: ", responseData);
-      console.log("New token: ", responseData.accessToken);
       if (responseData && responseData.accessToken) {
         sessionStorage.setItem("accessToken", responseData.accessToken);
 
@@ -70,19 +72,9 @@ const CheckoutPurchase: React.FC = () => {
         toast.success(successMessage);
         navigate("/my-courses");
       }
-    } catch (error: any) {
-      let errorMessage = "Something went wrong!";
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        errorMessage = error.response.data.message;
-      } else if (error instanceof Error) {
-        errorMessage = error.message;
-      }
-      setPurchaseStatus(errorMessage);
-      toast.error(errorMessage);
+    } catch (error) {
+      toast.error("Something went wrong.");
+      console.error("Component error: ", error);
       console.log(purchaseStatus);
     }
   };

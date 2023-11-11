@@ -23,15 +23,15 @@ const AdminUserList: React.FC = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      console.error("Access token is undefined.");
       toast.error("Access token is missing.");
+      console.error("Access token is undefined.");
       setLoading(false);
       return;
     }
 
     if (role !== "admin") {
-      console.error("Unauthorized action!");
       toast.error("Unauthorized action!");
+      console.error("Unauthorized action!");
       navigate("/");
       return;
     }
@@ -46,8 +46,8 @@ const AdminUserList: React.FC = () => {
           setLoading(false);
         }
       } catch (error) {
-        console.error("Faild fetching users.");
         toast.error("Failed fetching users.");
+        console.error("Component error: ", error);
         setLoading(false);
       }
     };
@@ -84,8 +84,8 @@ const AdminUserList: React.FC = () => {
       );
       setShowDeleteModal(false);
     } catch (error) {
-      console.error("Failed to delete user.", error);
       toast.error("Unable to delete user.");
+      console.error("Component error: ", error);
     }
   };
 

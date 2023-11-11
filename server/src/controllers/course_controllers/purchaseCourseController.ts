@@ -14,7 +14,7 @@ export const purchaseCourse = asyncHandler(
       const token = req.header("Authorization")?.replace("Bearer ", "");
 
       if (!token) {
-        throw new Error("Missing access token!");
+        throw new Error("Controller: Missing access token!");
       }
 
       const decoded = jwt.verify(token, SECRET_KEY) as JwtPayload;
@@ -22,7 +22,7 @@ export const purchaseCourse = asyncHandler(
       const user = await UserModel.findById(decoded.userId);
 
       if (!user) {
-        res.status(404).json({ message: "User not found!" });
+        res.status(404).json({ message: "Controller: User not found!" });
       }
 
       const course_id = req.params.id;
@@ -68,8 +68,8 @@ export const purchaseCourse = asyncHandler(
           owned_courses: user?.owned_courses,
         });
       }
-    } catch (err) {
-      res.status(500).json("Server error!");
+    } catch (error) {
+      res.status(500).json(`Controller: Error purchasing course! - ${error}`);
     }
   }
 );

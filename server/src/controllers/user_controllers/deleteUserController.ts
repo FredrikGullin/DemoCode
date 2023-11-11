@@ -11,24 +11,24 @@ export const deleteUser = asyncHandler(async (req: Request, res: Response) => {
     const accessToken = req.header("Authorization")?.replace("Bearer ", "");
 
     if (!accessToken) {
-      throw new Error("Missing access token!");
+      throw new Error("Controller: Missing access token!");
     }
 
     const decoded = jwt.verify(accessToken, SECRET_KEY) as JwtPayload;
 
     if (decoded.userId !== id) {
-      throw new Error("Unauthorized action!");
+      throw new Error("Controller: Unauthorized action!");
     }
 
     const deletedUser = await UserModel.findByIdAndDelete(req.params.id);
     if (!deletedUser) {
       res.status(404);
-      throw new Error("User not found!");
+      throw new Error("Controller: User not found!");
     }
     res.status(200).send("User successfully deleted!").json(deletedUser);
-  } catch (err) {
+  } catch (error) {
     res.status(500);
-    throw new Error("Server error!");
+    throw new Error(`Controller: Error deleting user - ${error}`);
   }
 });
 

@@ -5,7 +5,7 @@
   justify-content: center;
   text-decoration: none;
   color: inherit;
-  width: 100%; /* Updated this to 100% so it takes the full width of its parent */
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -23,10 +23,9 @@
   margin-bottom: 10px;
 }
 
-/* Assuming .dashboard-container is the parent container for the .dashboard-option items */
 .dashboard-container {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 768px) {

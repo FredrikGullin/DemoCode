@@ -21,7 +21,8 @@ const Profile: React.FC<{ id: string }> = () => {
   useEffect(() => {
     const getUser = async () => {
       if (!id) {
-        console.log("No userId provided");
+        toast.error("User ID not provided.");
+        console.error("User ID missing.");
         return;
       }
 
@@ -29,7 +30,8 @@ const Profile: React.FC<{ id: string }> = () => {
         const userData = await fetchUser(accessToken!, id);
         setUser(userData);
       } catch (error) {
-        console.error("Error getting user data:", error);
+        toast.error("Failed fetching profile information.");
+        console.error("Component error: ", error);
       }
     };
 
@@ -47,8 +49,8 @@ const Profile: React.FC<{ id: string }> = () => {
         setShowModal(false);
         return response.data;
       } catch (error) {
-        console.error("Error deleting account: ", error);
-        toast.error("Failed to delete account. Please try again later.");
+        toast.error("Failed to delete account. Please try again.");
+        console.error("Component error: ", error);
       }
     } else {
       toast.error("Username does not match. Please try again.");

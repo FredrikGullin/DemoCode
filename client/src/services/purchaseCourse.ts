@@ -7,10 +7,6 @@ const handlePurchaseCourse = async (
   accessToken: string,
   setAuthData: (data: any) => void
 ) => {
-  if (!accessToken) {
-    throw new Error("No access token available!");
-  }
-
   const headers = {
     Authorization: `Bearer ${accessToken}`,
   };
@@ -23,10 +19,9 @@ const handlePurchaseCourse = async (
 
     const updatedAuthData = response.data;
     setAuthData(updatedAuthData);
-    console.log("Response-obj: ", response);
     return response.data;
   } catch (error) {
-    throw new Error(`Something went wrong! ${error}`);
+    console.error("Service: Error purchasing course - ", error);
   }
 };
 

@@ -1,6 +1,6 @@
 .footer {
-  flex-shrink: 0; /* Prevent the footer from shrinking */
-  width: 100%; /* Full width */
+  flex-shrink: 0;
+  width: 100%;
   z-index: 10;
 }
 

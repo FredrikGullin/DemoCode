@@ -191,20 +191,9 @@ _på bekostnad av kvalité._
     4. Skriv klart dokumentation
     5. Lämna in uppgiften
 
-## Utveckling - Sprint 5 (Nice to have)
-
-### Deadline
-
-    Datum: N/A
-
-### Mål
-
-    Under denna sprint planerar jag (om tid finns) att utveckla ytterligare funktionalitet (nice to have).
-
-    Sprinten pågår under perioden: 2023-XX-XX - 2023-XX-XX
-
-### Tasks
-
-    1. Prioritera och utveckla nice to have- funktion
-    2. Testa funktionalitet
-    3. Deployment - Uppdatera live-applikationen
+    Datum: 2023-11-10
+    -----------------
+    * Appen färdigställd (utan nice to haves)
+    * Tester - utfört
+    * Koden städad - OK
+    * Deployment - problematisk

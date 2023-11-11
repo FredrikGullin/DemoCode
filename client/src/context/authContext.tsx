@@ -8,17 +8,24 @@ import {
 } from "react";
 import { AuthStateInterface } from "../interfaces/authState";
 
+/* Lägger till två funkgioner som props, setAuthData för att uppdatera 
+authData och logout för att hantera utloggning av användare */
 interface AuthContextProps extends AuthStateInterface {
   setAuthData: (data: AuthStateInterface) => void;
   logout: () => void;
 }
 
+/* Definitierar de props som AuthContextProvider ska ha, i detta fall 
+"children", det vill säga innehållet som ska omslutas av providern */
 interface AuthContextProviderProps {
   children: ReactNode;
 }
 
+/* En kontext skapas som undefined, vilket innebär att den inte har något värde från början */
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
+/* AuthContextProvidern använder sig av useState för att spara och hantera
+ användares authensieringsdata som lagras i sessionStorage */
 export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   children,
 }) => {
@@ -30,18 +37,24 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     role: sessionStorage.getItem("role") ?? undefined,
   });
 
+  /* Använder useRef för att hålla koll på ett JWT accessTokens 
+  återstående tid för att kunna logga ut en användare när accessToken har utgått */
   const logoutTimerId = useRef<NodeJS.Timeout | null>(null);
 
+  /* Funktionen beräknar återstående tid i millisekunder till ett JWT accessToken 
+  löper ut genom av avkoda och jämföra utgånstiden med nuvarande tid */
   const getTokenExpireTime = (token: string): number => {
     try {
       const decoded: any = JSON.parse(atob(token.split(".")[1]));
       const currentTime = Date.now() / 1000;
       return (decoded.exp - currentTime) * 1000;
-    } catch (e) {
+    } catch (error) {
+      console.error("Context timer error: ", error);
       return 0;
     }
   };
 
+  /* Logout funktionen uppdaterar authData och tar bort JWT accessToken från sessionStorage */
   const logout = () => {
     if (logoutTimerId.current) {
       clearTimeout(logoutTimerId.current);
@@ -57,6 +70,8 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     });
   };
 
+  /* Funktionen uppdaterar authData och sessionStorage med nya 
+  autensieringsuppgifter och kan användas vid behov */
   const updateAuthData = (data: AuthStateInterface) => {
     if (logoutTimerId.current) {
       clearTimeout(logoutTimerId.current);
@@ -77,6 +92,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
     setAuthData(data);
   };
 
+  /* useEffect används för att initialt lägga in authData från sessionStorage */
   useEffect(() => {
     const token = sessionStorage.getItem("accessToken");
     if (token) {
@@ -100,3 +116,7 @@ export const useAuth = () => {
   }
   return context;
 };
+
+/* Context Provider komponenten kan användas med useAuth hook för att skydda routes 
+samt för att spara och tillgängliggöra autensieringsuppgifter i de komponenter som 
+omfattas av t.ex "protected-routes" med mera. */

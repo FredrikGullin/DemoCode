@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
+import { toast } from "react-toastify";
 import fetchLesson from "../../services/fetchLesson";
 import { LessonInterface } from "../../interfaces/lessonInterface";
 import "./lesson.css";
@@ -13,7 +14,8 @@ const Lesson: React.FC<{ courseId: string; lessonId: string }> = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      console.error("Access token is undefined!");
+      toast.error("Access token is undefined.");
+      console.error("Missing access token.");
       return;
     }
 
@@ -23,17 +25,17 @@ const Lesson: React.FC<{ courseId: string; lessonId: string }> = () => {
       console.log("Lesson ID: ", _id);
       try {
         const lessonData = await fetchLesson(accessToken, id!, _id!);
-        console.log("Data from frontend: ", lessonData);
         setLesson(lessonData);
       } catch (error) {
-        console.error("Faild fetching lesson!");
+        toast.error("Failed fetching lesson.");
+        console.error("Component error: ", error);
       }
     };
     getLesson();
   }, [accessToken && id && _id]);
 
   if (!lesson) {
-    return <div>Lesson not found!</div>;
+    return <div>Lesson not found.</div>;
   }
 
   let videoId = lesson.video_url.split("v=")[1];
