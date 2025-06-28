@@ -13,7 +13,11 @@ const Courses: React.FC = () => {
     const loadCoureses = async () => {
       try {
         const data = await fetchCourses();
-        setCourses(data);
+        if (Array.isArray(data)) {
+          setCourses(data);
+        } else {
+          setCourses([]);
+        }
       } catch (error) {
         setError("Faild to fetch courses.");
         console.error("Component error: ", error);
