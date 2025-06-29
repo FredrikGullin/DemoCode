@@ -9,6 +9,7 @@ import connectRedis, {
   getRevokedList,
   scheduleClean,
 } from "./config/redisConnection";
+import { sanitizeInput } from "./src/middleware/sanitizeInput";
 
 dotenv.config();
 connectDb();
@@ -24,6 +25,8 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
+
+app.use(sanitizeInput);
 app.use(routes);
 app.use(errorHandler);
 
