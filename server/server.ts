@@ -22,7 +22,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "*", // tillfälligt medan du felsöker
+    origin: "https://apeggio-frontend.netlify.app",
     credentials: true,
   })
 );
