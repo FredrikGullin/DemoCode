@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 import { toast } from "react-toastify";
 import adminFetchUsers from "../../services/adminFestchUsers";
@@ -13,7 +13,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./adminUsers.css";
 
 const AdminUserList: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
   const [users, setUsers] = useState<UserInterface[] | null>([]);
   const [loading, setLoading] = useState(true);
   const { role, accessToken } = useAuth();

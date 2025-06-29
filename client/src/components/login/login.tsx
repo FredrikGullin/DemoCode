@@ -21,7 +21,10 @@ const Login: React.FC = () => {
         email: inputEmail,
         password: inputPassword,
       });
-      console.log("Received:", response);
+
+      if (!response) {
+        throw new Error("No response from login API.");
+      }
 
       sessionStorage.setItem("accessToken", response.accessToken);
       sessionStorage.setItem("userId", response.userId);

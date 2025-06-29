@@ -33,12 +33,7 @@ const EditProfile: React.FC = () => {
     };
 
     try {
-      const updatedUser = await editUser(
-        accessToken,
-        id,
-        setAuthData,
-        userData
-      );
+      await editUser(accessToken, id, setAuthData, userData);
       toast.success("Profile updated successfully.");
       navigate(`/profile/${id}`);
     } catch (error) {
