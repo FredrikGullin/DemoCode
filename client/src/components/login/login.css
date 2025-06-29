@@ -35,8 +35,9 @@ label {
 
 @media (max-width: 769px) {
   .login-container {
-    min-width: none;
+    min-width: 300px;
     margin: 0 auto;
+    margin-top: 300px;
     margin-bottom: 200px;
   }
 }

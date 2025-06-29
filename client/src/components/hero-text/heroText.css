@@ -19,6 +19,10 @@
 }
 
 @media (max-width: 768px) {
+  .hero-container {
+    margin-top: 260px;
+  }
+
   .hero-text h1 {
     font-size: 2rem;
   }

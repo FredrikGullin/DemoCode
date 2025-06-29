@@ -7,11 +7,7 @@
   color: inherit;
   width: 100%;
   box-sizing: border-box;
-}
-
-.welcome-message h1 {
-  font-size: 3rem;
-  margin-top: 4rem;
+  height: 100%;
 }
 
 .dashboard-link:hover {
@@ -23,13 +19,39 @@
   margin-bottom: 10px;
 }
 
-.dashboard-container {
+.card {
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.dashboard-container,
+.dashboardUser-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.welcome-message {
+  text-align: center;
+}
+
+.welcome-message h1 {
+  font-size: 3rem;
+  margin-top: 4rem;
 }
 
 @media only screen and (max-width: 768px) {
   .dashboard-option {
     width: 100%;
+  }
+
+  .welcome-message h1 {
+    font-size: 2rem;
+    margin-top: 2rem;
   }
 }

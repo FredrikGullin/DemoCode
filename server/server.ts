@@ -28,6 +28,9 @@ app.use(
 
 app.use(sanitizeInput);
 app.use(routes);
+app.use("*", (req, res) => {
+  res.status(404).json({ message: "🚫 Route not found" });
+});
 app.use(errorHandler);
 
 app.listen(PORT, () => {
