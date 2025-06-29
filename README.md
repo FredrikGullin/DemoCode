@@ -1,6 +1,7 @@
 ## u09-Avancerad Javascript
 
 # Appeggio
+
 Appeggio är en plattform där musikintresserade kan hitta online-kurser för att lära sig spela ett musikinstrument.
 
 ## INFORMATION TILL LÄRAREN
@@ -37,6 +38,7 @@ Appeggio är en plattform där musikintresserade kan hitta online-kurser för at
     6. Övrigt
 
 ## Introduktion och idé
+
     Idén går ut på att skapa en plattform för musiker och musikintresserade som vill lära ut- eller lära sig spela ett instrument.
 
     I dess enklaste form skulle detta kunna innebära en applikation där en användare kan registrera sig, betala för en kurs och därefter få ta del av materialet som ligger bakom en betalvägg.
@@ -46,7 +48,7 @@ Appeggio är en plattform där musikintresserade kan hitta online-kurser för at
     För denna uppgift har jag valt att förhålla mig till följande:
 
     * I detta fall kommer en användare kunna registrera sig och logga in. När användaren är inloggad kommer denna kunna se ett utbud av "kurser" som man användaren ska kunna betala för.
-    
+
     * När betalningen är utförd kommer användaren kunna ta del av materialet som ligger bakom betalväggen. Det finnas förberett "material" i databasen som kommer presenteras för användaren.
 
     * En användare ska kunna söka på material i databasen.
@@ -59,7 +61,6 @@ Appeggio är en plattform där musikintresserade kan hitta online-kurser för at
 
 **På sikt skulle detta kunna utvecklas till följande:**
 
-    
     * En tjänst där både elever och lärare kan registrera sig.
 
     * Som elev skulle man kunna skapa en profil, logga in och registrera sig på en kurs som tillhandahålls av en lärare. När eleven betalat för kursen skulle eleven kunna ta del av kursmaterialet / kursplanen som ligger bakom en betalvägg.
@@ -75,6 +76,7 @@ Appeggio är en plattform där musikintresserade kan hitta online-kurser för at
     * Man skulle kunna byta ut temat "musik" till vad som helst då platformens infrastruktur skulle kunna användas inom vilket område som helst.
 
 ## MIT License
+
     Copyright (c) 2023 Appeggio
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -97,7 +99,7 @@ Appeggio är en plattform där musikintresserade kan hitta online-kurser för at
 
 ## Länkar
 
-    Länk till live appliktion online: 
+    Länk till live appliktion online: https://appeggio.netlify.app/
 
 ## Övrigt
 

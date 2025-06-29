@@ -1,0 +1,7 @@
+.news-container {
+  min-height: calc(100vh - 221px);
+}
+
+.news-post-text {
+  margin-bottom: 10px;
+}

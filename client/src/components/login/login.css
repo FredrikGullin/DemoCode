@@ -1,0 +1,43 @@
+.login-view {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-height: calc(100vh - 500px);
+  min-width: 60%;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-height: 50vh;
+  max-width: 500px !important;
+  background-color: rgba(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.login-container h2 {
+  color: gray;
+}
+
+label {
+  margin-top: 10px;
+  color: gray;
+}
+
+.login-button {
+  margin-top: 10px;
+  float: right;
+}
+
+@media (max-width: 769px) {
+  .login-container {
+    min-width: 300px;
+    margin: 0 auto;
+    margin-top: 300px;
+    margin-bottom: 200px;
+  }
+}

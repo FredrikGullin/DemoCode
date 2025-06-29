@@ -3,13 +3,16 @@
 ## Applikation
 
     Appeggio
+    _Deployment länk: https://appeggio.netlify.app/_
 
 ## Teknisk information
+
     * Språk: TypeScript
     * Databas: MongoDB
+    * Server-cache: REDIS
     * Backend: Node / Express
     * Frontend: React
-    * Design: Tailwind
+    * Design: Bootstrap / CSS
     * Dokumentation: Markdown
 
 ### Versionshantering
@@ -28,7 +31,6 @@
 
     * Som besökare ska man kunna se ett utbud av plattformens tillgängliga kurser
     * Som besökare ska man kunna registrera sig som användare
-    
 
 ### Registrerad användare
 

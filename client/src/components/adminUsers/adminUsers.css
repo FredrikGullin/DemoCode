@@ -1,0 +1,27 @@
+.admin-users-list-container {
+  min-height: calc(100vh - 237px);
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .admin-users-list-container {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  ul li {
+    font-size: 0.7rem;
+  }
+
+  .admin-user-icon {
+    font-size: 0.7rem;
+    min-width: 60px;
+    max-width: 65px;
+  }
+
+  .admin-user-title {
+    font-size: 1.4rem;
+  }
+}

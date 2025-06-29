@@ -1,8 +1,8 @@
-# Appeggio intervju 1
+# Appeggio - Intervju 1
 
 ## Demografisk information
 
-    Namn: Xse Chaz
+    Namn: Xsenka Chaz
     Ålder: 46
     Kön: Kvinna
     Geografiskt område: Stockholm

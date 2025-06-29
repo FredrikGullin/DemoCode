@@ -1,0 +1,49 @@
+.info-card-container {
+  min-height: calc(100vh - 233px);
+  padding-top: 40px;
+}
+
+.info-card {
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.info-card-img-top {
+  background-color: #f8f9fa;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-card-body {
+  padding: 20px;
+}
+
+.info-card-title,
+.info-card-subtitle,
+.info-card-text,
+.info-card-link {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.info-card-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.info-card-link:hover {
+  color: #0056b3;
+}
+
+.delete-button {
+  margin-right: 8px;
+}
+
+Button {
+  margin-right: 0.5rem !important;
+}

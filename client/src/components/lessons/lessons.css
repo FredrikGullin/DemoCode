@@ -1,0 +1,96 @@
+.lessons-container {
+  min-height: calc(100vh - 221px);
+}
+
+.lesson-pic-SM {
+  display: none;
+}
+
+.lessons-hero-section-lg {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding: 40px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("../../assets/courses-archive-pic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: black;
+  color: white;
+}
+
+.lessons-hero-section-lg h1 {
+  font-size: 2.5rem;
+  text-decoration: underline;
+}
+
+.lesson-pic-container-LG img {
+  height: 250px;
+  float: right;
+}
+
+.list-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.card-title {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  margin: 20px;
+}
+
+.card {
+  transition: transform 0.5 ease;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .lesson-pic-container-LG {
+    display: none;
+  }
+
+  .lesson-pic-SM {
+    display: block;
+  }
+
+  .lessons-hero-section-lg {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding: 25px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+      url("../../assets/courses-archive-pic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: black;
+    color: white;
+  }
+
+  .lessons-hero-section-lg h1 {
+    font-size: 1.4rem;
+    text-decoration: underline;
+  }
+
+  .list-container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 420px) {
+    .list-container {
+      min-width: 100%;
+      margin: 0 auto;
+    }
+  }
+}

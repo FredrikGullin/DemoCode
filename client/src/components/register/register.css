@@ -1,0 +1,43 @@
+.register-view {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-height: calc(100vh - 500px);
+  min-width: 60%;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-height: 55vh;
+  max-width: 500px !important;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.register-container h2 {
+  color: gray;
+}
+
+label {
+  margin-top: 10px;
+}
+
+.register-button {
+  margin-top: 10px;
+  float: right;
+}
+
+@media (max-width: 769px) {
+  .register-container {
+    min-width: 300px;
+    margin: 0 auto;
+    margin-top: 260px;
+    margin-bottom: 200px;
+  }
+}

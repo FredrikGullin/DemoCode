@@ -1,0 +1,30 @@
+.update-form-container {
+  min-height: calc(100vh - 233px);
+  max-width: 80%;
+  padding: 60px;
+  margin: 0 auto;
+}
+
+.update-form {
+  width: 450px;
+}
+
+@media (max-width: 768px) {
+  .update-form-container {
+    padding: 30px;
+  }
+
+  .update-form {
+    width: 300px;
+  }
+}
+
+@media (max-width: 430px) {
+  .update-form-container {
+    padding: 0;
+  }
+
+  .update-form {
+    width: 250px;
+  }
+}

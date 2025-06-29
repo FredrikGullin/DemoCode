@@ -1,0 +1,58 @@
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding-bottom: 2rem;
+}
+
+.button {
+  margin: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.452);
+  text-shadow: none;
+}
+
+.signUpButton {
+  margin-right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    margin-top: 260px;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .buttons-container {
+    float: right;
+  }
+}
+
+@media (min-width: 769px) {
+  .hero-container {
+    justify-content: center;
+  }
+
+  .hero-container h1 {
+    font-size: 3rem;
+  }
+
+  .hero-container p {
+    font-size: 1.5rem;
+  }
+
+  .hero-container .button {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    opacity: 0.8;
+  }
+
+  .hero-container .btn {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+  }
+}

@@ -1,0 +1,9 @@
+.info-template-container {
+  color: white;
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 221px);
+  margin: 0;
+  padding: 0;
+}
