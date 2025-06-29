@@ -4,21 +4,19 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const redisClient = createClient({
-  password: process.env.REDIS_PASSWORD,
-  socket: {
-    host: process.env.REDIS_HOST,
-    port: parseInt(process.env.REDIS_PORT || "6379", 10),
-  },
+  url: process.env.REDIS_URL,
 });
 
 export const connectRedis = async () => {
   try {
-    await redisClient.connect();
-    console.log(
-      "connectRedis: Connected to redis-database: Chillazz-Redis-free-db"
+    redisClient.on("error", (err) =>
+      console.error("❌ Redis Client Error:", err)
     );
+    await redisClient.connect();
+    console.log("✅ connectRedis: Connected to Redis via Upstash");
   } catch (error) {
-    throw new Error(`connectRedis: Error connecting to REDIS! - ${error}`);
+    console.error("❌ connectRedis: Error connecting to REDIS!", error);
+    throw error;
   }
 };
 
