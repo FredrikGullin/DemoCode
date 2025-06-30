@@ -20,9 +20,15 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.json());
+
+const allowedOrigins = [
+  "http://localhost:5173", // dev
+  "https://apeggio-frontend.netlify.app", // prod
+];
+
 app.use(
   cors({
-    origin: "https://apeggio-frontend.netlify.app",
+    origin: allowedOrigins,
     credentials: true,
   })
 );
