@@ -23,13 +23,20 @@ app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:5173", // dev
-  "https://apeggio-frontend.netlify.app", // prod
+  "https://appeggio-frontend.netlify.app", // prod
 ];
 
 app.use(
   cors({
-    origin: "https://appeggio-frontend.netlify.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: (origin, callback) => {
+      // Tillåt om origin är i listan eller om det är undefined (t.ex. curl, Postman)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", ""],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
