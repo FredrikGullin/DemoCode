@@ -49,8 +49,13 @@
   object-fit: cover;
 }
 
+.card-slogan {
+  padding-left: 20px;
+}
+
 .card-info {
   overflow: hidden;
+  padding-left: 20px;
   max-height: 100px;
   background: -webkit-linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   -webkit-background-clip: text;
@@ -68,6 +73,7 @@
   font-style: italic;
   text-decoration: underline;
   color: gray;
+  padding-left: 20px;
 }
 
 @media (max-width: 768px) {

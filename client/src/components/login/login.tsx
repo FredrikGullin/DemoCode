@@ -21,7 +21,11 @@ const Login: React.FC = () => {
         email: inputEmail,
         password: inputPassword,
       });
-      console.log("Received:", response);
+
+      if (!response) {
+        toast.error("Login failed – no response from server.");
+        return;
+      }
 
       sessionStorage.setItem("accessToken", response.accessToken);
       sessionStorage.setItem("userId", response.userId);

@@ -33,6 +33,7 @@ const EditProfile: React.FC = () => {
     };
 
     try {
+      // @ts-ignore
       const updatedUser = await editUser(
         accessToken,
         id,

@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./adminUsers.css";
 
 const AdminUserList: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id: _id } = useParams<{ id: string }>();
   const [users, setUsers] = useState<UserInterface[] | null>([]);
   const [loading, setLoading] = useState(true);
   const { role, accessToken } = useAuth();
