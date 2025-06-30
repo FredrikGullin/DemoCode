@@ -23,10 +23,13 @@ const Login: React.FC = () => {
       });
 
       if (!response) {
-        throw new Error("No response from login API.");
+
+        toast.error("Login failed – no response from server.");
+        return;
       }
 
-      console.log("Received:", response);
+        throw new Error("No response from login API.");
+      }
 
       sessionStorage.setItem("accessToken", response.accessToken);
       sessionStorage.setItem("userId", response.userId);
