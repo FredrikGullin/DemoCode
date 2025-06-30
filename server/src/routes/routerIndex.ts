@@ -5,4 +5,5 @@ import courseRouter from "./courseRoutes";
 
 export const routes = express.Router();
 
-routes.use(userRouter, courseRouter);
+routes.use(userRouter);
+routes.use(courseRouter);

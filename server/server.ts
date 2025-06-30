@@ -20,17 +20,38 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.json());
+
+const allowedOrigins = [
+  "http://localhost:5173", // dev
+  "https://appeggio-frontend.netlify.app", // prod
+];
+
+// ✅ CORS + dynamic origin
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
+// ✅ Hantera preflight-requests
+app.options("*", cors());
+
 app.use(sanitizeInput);
 app.use(routes);
+
+// 404 fallback
 app.use("*", (req, res) => {
   res.status(404).json({ message: "🚫 Route not found" });
 });
+
 app.use(errorHandler);
 
 app.listen(PORT, () => {
