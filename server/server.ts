@@ -56,5 +56,5 @@ app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
-  console.log("Trigger deploy...");
+  console.log("Server is online...");
 });
