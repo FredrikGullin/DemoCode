@@ -2,15 +2,28 @@ name: Daily Redis Cleanup
 
 on:
   schedule:
-    - cron: "0 3 * * *"  # Varje dag kl 03:00 UTC (05:00 svensk tid)
-  workflow_dispatch:     # Gör det manuellt via GitHub också
+    - cron: "0 3 * * *"  # Kör varje dag kl 03:00 UTC (05:00 svensk tid)
+  workflow_dispatch:      # Gör det manuellt också
 
 jobs:
   ping-backend:
     runs-on: ubuntu-latest
     steps:
-      - name: Call Redis cleanup endpoint
+      - name: Retry Redis cleanup endpoint up to 6 times
         run: |
-          curl -X GET https://appeggio-backend.onrender.com/cron/wakeup-clean \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"
+          n=0
+          until [ $n -ge 6 ]
+          do
+            echo "➡️ Attempt $((n+1))..."
+            curl -s -f -X GET https://appeggio-backend.onrender.com/cron/wakeup-clean \
+              -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" && echo "✅ Success" && break
+            n=$((n+1))
+            echo "❌ Attempt $n failed. Retrying in 10 seconds..."
+            sleep 10
+          done
+
+          if [ $n -eq 6 ]; then
+            echo "🔥 All 6 attempts failed."
+            exit 1
+          fi
 
