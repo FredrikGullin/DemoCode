@@ -47,6 +47,21 @@ app.options("*", cors());
 app.use(sanitizeInput);
 app.use(routes);
 
+app.get("/cron/wakeup-clean", async (req, res) => {
+  const auth = req.headers.authorization;
+  if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
+    return res.status(403).send("Forbidden");
+  }
+
+  try {
+    await cleanRevokedList();
+    res.status(200).send("✅ Redis cleaned!");
+  } catch (err) {
+    console.error("❌ Cron-failure:", err);
+    res.status(500).send("❌ Cron-failure");
+  }
+});
+
 // 404 fallback
 app.use("*", (req, res) => {
   res.status(404).json({ message: "🚫 Route not found" });
