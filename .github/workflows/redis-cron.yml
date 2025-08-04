@@ -1,0 +1,16 @@
+name: Daily Redis Cleanup
+
+on:
+  schedule:
+    - cron: "0 3 * * *"  # Varje dag kl 03:00 UTC (05:00 svensk tid)
+  workflow_dispatch:     # Gör det manuellt via GitHub också
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Redis cleanup endpoint
+        run: |
+          curl -X GET https://appeggio-backend.onrender.com/cron/wakeup-clean \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"
+
